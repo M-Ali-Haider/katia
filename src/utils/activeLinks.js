@@ -5,3 +5,10 @@ export const activeLinks = [
   { title: "Pricing", id: "#pricing" },
   { title: "Contact Us", id: "#contact" },
 ];
+
+export const scrollToSection = (id) => {
+  const section = document.querySelector(id);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+};

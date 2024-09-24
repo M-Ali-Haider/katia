@@ -3,7 +3,7 @@ import FeatureGrid from "./grid";
 const Features = () => {
   return (
     <>
-      <div className="my-[120px]">
+      <div className="py-[120px]" id="features">
         <div className="flex flex-wrap justify-between gap-8">
           <div className="max-w-[621px] font-polySans text-3xl sm:text-[40px] sm:leading-[56px] text-white">
             Ground-breaking Features for Unrivalled Outcomes

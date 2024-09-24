@@ -7,7 +7,7 @@ import Image from "next/image";
 const Landing = () => {
   return (
     <>
-      <div className="max-w-[1256px] mt-[calc(11px+77px+112px)]">
+      <div className="max-w-[1256px] pt-[calc(11px+77px+112px)]" id="home">
         <Introducing />
         <div className="flex landing:flex-row flex-col justify-between mt-5 gap-6">
           <Redefining />

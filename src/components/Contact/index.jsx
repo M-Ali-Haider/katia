@@ -4,7 +4,7 @@ import ContactRight from "./right";
 const Contact = () => {
   return (
     <>
-      <div className="my-28 flex flex-wrap justify-between gap-20">
+      <div className="py-28 flex flex-wrap justify-between gap-20" id="contact">
         <ContactLeft />
         <ContactRight />
       </div>
