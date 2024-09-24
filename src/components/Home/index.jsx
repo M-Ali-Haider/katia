@@ -2,6 +2,7 @@ import AboutUs from "../About";
 import Features from "../Features";
 import Header from "../Header";
 import Landing from "../Landing";
+import Pricing from "../Pricing";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
           <Landing />
           <AboutUs />
           <Features />
+          <Pricing />
         </div>
       </main>
     </>

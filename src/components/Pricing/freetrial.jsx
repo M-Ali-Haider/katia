@@ -1,0 +1,22 @@
+const FreeTrialCard = () => {
+  return (
+    <div className="flex-1 bg-[#25262D] rounded-xl px-6 flex flex-col items-center py-24">
+      <div className="max-w-[399px]">
+        <div className="text-[#5F5F5F] mb-8 font-semibold text-sm leading-[17.64px] tracking-[0.15em]">
+          7 Days Free Trial
+        </div>
+        <div className="text-white mb-3 font-polySans text-2xl sm:text-[32px] sm:leading-[44.8px]">
+          $8/mo
+        </div>
+        <div className="text-[#94938D] text-sm leading-[21px] mb-[22px]">
+          Designed for growing teams ready to harness the full power of AI.
+        </div>
+        <div className="w-full rounded-2xl bg-[#EBE9DE] font-medium text-sm leading-[21px] text-center py-3 cursor-pointer">
+          Get started
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FreeTrialCard;
