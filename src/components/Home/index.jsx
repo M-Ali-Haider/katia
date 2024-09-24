@@ -1,4 +1,5 @@
 import AboutUs from "../About";
+import Features from "../Features";
 import Header from "../Header";
 import Landing from "../Landing";
 
@@ -10,6 +11,7 @@ const Home = () => {
         <div className="max-w-[1296px] w-full px-5">
           <Landing />
           <AboutUs />
+          <Features />
         </div>
       </main>
     </>
