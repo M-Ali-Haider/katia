@@ -6,7 +6,7 @@ const AboutUs = () => {
   return (
     <>
       <div
-        className="flex flex-wrap-reverse gap-10 justify-between py-[140px]"
+        className="flex flex-wrap-reverse gap-10 justify-between sm:py-[140px]"
         id="about"
       >
         <AboutImage />
