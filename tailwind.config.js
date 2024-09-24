@@ -7,6 +7,9 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    transitionTimingFunction: {
+      "custom-ease": "cubic-bezier(0.76,0,0.24,1)",
+    },
     extend: {
       colors: {
         background: "var(--background)",
@@ -17,6 +20,7 @@ module.exports = {
       },
       screens: {
         landing: "968px",
+        footer: "860px",
       },
     },
   },

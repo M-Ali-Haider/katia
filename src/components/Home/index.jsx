@@ -1,5 +1,8 @@
 import AboutUs from "../About";
+import Contact from "../Contact";
 import Features from "../Features";
+import Footer from "../Footer";
+import GetStarted from "../GetStarted";
 import Header from "../Header";
 import Landing from "../Landing";
 import Pricing from "../Pricing";
@@ -14,6 +17,9 @@ const Home = () => {
           <AboutUs />
           <Features />
           <Pricing />
+          <Contact />
+          <GetStarted />
+          <Footer />
         </div>
       </main>
     </>
