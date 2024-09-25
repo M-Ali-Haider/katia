@@ -5,7 +5,7 @@ const Features = () => {
     <>
       <div className="py-12 sm:py-[120px]" id="features">
         <div className="flex flex-wrap justify-between gap-8">
-          <div className="max-w-[621px] font-polySans text-3xl sm:text-[40px] sm:leading-[56px] text-white">
+          <div className="max-w-[621px] font-polySans text-[28px] leading-[42px] sm:text-[40px] sm:leading-[56px] text-white">
             Ground-breaking Features for Unrivalled Outcomes
           </div>
           <div className="h-full flex flex-col items-end">

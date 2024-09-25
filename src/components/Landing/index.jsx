@@ -7,14 +7,17 @@ import Image from "next/image";
 const Landing = () => {
   return (
     <>
-      <div className="max-w-[1256px] pt-[calc(11px+77px+112px)]" id="home">
+      <div
+        className="max-w-[1256px] pt-[calc(77px+60px)] sm:pt-[calc(11px+77px+112px)]"
+        id="home"
+      >
         <Introducing />
         <div className="flex landing:flex-row flex-col justify-between mt-5 gap-6">
           <Redefining />
           <GetStarted />
         </div>
       </div>
-      <div className="my-12 sm:my-28 relative aspect-[1257/618]">
+      <div className="mt-[60px] mb-[80px] sm:my-28 relative aspect-[1257/618]">
         <Image
           src={"/landing.png"}
           alt="landing page image"
