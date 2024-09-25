@@ -7,7 +7,7 @@ const Dropdown = ({ setDropDownStatus }) => {
   };
   return (
     <>
-      <div className="absolute right-0 top-[calc(100%+16px)] flex flex-col gap-5 rounded-2xl py-[36.5px] w-[288px] bg-[#25262D]">
+      <div className="absolute right-0 top-[calc(100%+16px)] flex flex-col gap-5 rounded-2xl py-[36.5px] w-[288px] bg-[#25262D] shadow-lg">
         {activeLinks.map((item, index) => (
           <div
             key={index}
