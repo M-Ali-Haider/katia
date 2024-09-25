@@ -6,13 +6,14 @@ const FreeTrialCard = () => {
           7 Days Free Trial
         </div>
         <div className="text-white mb-3 font-polySans text-2xl sm:text-[32px] sm:leading-[44.8px]">
-          $8/mo
+          $5-$10/month
         </div>
         <div className="text-[#94938D] text-sm leading-[21px] mb-[22px]">
-          Designed for growing teams ready to harness the full power of AI.
+          AI Katia offers full access to her personal companion features at a
+          price tailored to your location.
         </div>
         <div className="w-full rounded-2xl bg-[#EBE9DE] font-medium text-sm leading-[21px] text-center py-3 cursor-pointer">
-          Get started
+          Sign Up for Free Trial
         </div>
       </div>
     </div>

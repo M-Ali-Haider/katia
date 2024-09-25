@@ -9,31 +9,31 @@ export const featureCards = [
   {
     svgComp: <FirstSVG />,
     title: "Train on Your Data",
-    desc: "Upload your data to train AI Chatbots, opening endless possibilities for use.",
+    desc: "Offer emotional support in times of stress, anxiety, or loneliness.",
   },
   {
     svgComp: <SecondSVG />,
     title: "Predictive Analytics",
-    desc: "Add your custom chatbot to your website(s) with just one line of code. Use it for customer service, sales, lead generation, and more!",
+    desc: "Answer personal questions and provide thoughtful advice on everyday life problems.",
   },
   {
     svgComp: <ThirdSVG />,
     title: "Intelligent AI Chatbots",
-    desc: "Generates insightful reports with deep analytics, enabling data-driven strategies and improved outcomes",
+    desc: "Help you organize and prioritize your tasks to reduce mental clutter.",
   },
   {
     svgComp: <FourthSVG />,
     title: "Efficient History Management",
-    desc: "Upload and manage files to train your AI Chatbots, optimizing their performance.",
+    desc: "Listen to your thoughts and help you reflect on them for deeper self-awareness.",
   },
   {
     svgComp: <FifthSVG />,
     title: "Secured  & Advanced Chat",
-    desc: "Engage in seamless conversations with your AI Chatbots for enhanced productivity.",
+    desc: "Provide private, secure conversations, giving you peace of mind.",
   },
   {
     svgComp: <SixthSVG />,
     title: "Comprehensive Messaging",
-    desc: "Communicate effectively with AI Chatbots using a robust messaging system.",
+    desc: "Surf the web to find the latest information, news, or answers to any query, offering real-time updates and reliable sources.",
   },
 ];
