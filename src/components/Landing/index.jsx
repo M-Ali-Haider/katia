@@ -17,7 +17,7 @@ const Landing = () => {
           <GetStarted />
         </div>
       </div>
-      <div className="mt-[60px] mb-[40px] sm:mb-0 sm:mt-28 relative aspect-[1257/618]">
+      <div className="mt-[60px] mb-[80px] sm:mb-0 sm:mt-28 relative aspect-[1257/618]">
         <Image
           src={"/landing.png"}
           alt="landing page image"
