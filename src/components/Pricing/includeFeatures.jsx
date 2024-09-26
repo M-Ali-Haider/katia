@@ -2,9 +2,9 @@ import { pricingFeatures } from "@/utils/pricingFeatures";
 
 const IncludeFeaturesCard = () => {
   return (
-    <div className="flex-1 bg-[#101010] py-10 px-6 rounded-xl flex flex-col items-center">
+    <div className="flex-1 bg-[#101010] py-10 px-6 rounded-xl flex flex-col items-center justify-center">
       <div className="max-w-[450px] w-full">
-        <div className="text-[#5F5F5F] mb-10 text-sm leading-[17.64px] font-semibold tracking-[0.15em]">
+        <div className="text-[#5F5F5F] uppercase mb-10 text-lg leading-[17.64px] font-semibold tracking-[0.15em]">
           Includes Features:
         </div>
         <div className="flex flex-col gap-5">

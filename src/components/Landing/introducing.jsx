@@ -8,7 +8,7 @@ const Introducing = () => {
       flex gap-1 items-center text-[#EBE9DE]"
     >
       <span className="text-sm leading-[21px] sm:text-base sm:leading-6">
-        Introducing AI katia model
+        An AI that Understands You
       </span>
       <ArrowSVG />
     </div>

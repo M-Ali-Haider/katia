@@ -5,19 +5,23 @@ import ThirdSVG from "@/assets/About/third";
 
 export const aboutUsCards = [
   {
-    svgComp: <FirstSVG />,
-    desc: "Personalize chatbot widgets to seamlessly with unique style",
+    title: "Real Conversations",
+    desc: "Katia engages in natural conversations, understanding your feelings, and offering advice like a trusted friend.",
   },
   {
-    svgComp: <SecondSVG />,
-    desc: "Create a personal connection with the study material",
+    title: "Personal Problem-Solving",
+    desc: "From everyday dilemmas to complex emotional challenges, Katia can help you think through your problems and find solutions.",
   },
   {
-    svgComp: <ThirdSVG />,
-    desc: "Customer interactions with advanced AI capabilities of ChatGPT",
+    title: "Emotional Support",
+    desc: "Feeling stressed or anxious? Katia provides calming, thoughtful responses to help you process emotions and regain balance.",
   },
   {
-    svgComp: <FourthSVG />,
-    desc: "Ensure affiliate links are properly tagged to adhere to Google’s guidelines.",
+    title: "Always Learning",
+    desc: "With each interaction, Katia becomes more in tune with your personality, adapting her responses to meet your emotional and intellectual needs.",
+  },
+  {
+    title: "Latest Information",
+    desc: "Need up-to-date facts or trending news? Katia can browse the web and bring the latest information directly to you, offering insights from the most current sources available.",
   },
 ];
