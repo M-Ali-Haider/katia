@@ -9,16 +9,16 @@ const GetStarted = () => {
           you company—AI Katia is always here to support you.
         </p>
         <p>
-          She learns from each conversation, becoming more attuned to your
-          unique needs and offering insights, guidance, and emotional support
-          whenever you need it. In addition, Katia can surf the web, providing
-          you with the latest information and helping you stay informed by
-          searching the web.
+          She has a dynamic memory and learns from each conversation, becoming
+          more attuned to your unique needs and offering insights, guidance, and
+          emotional support whenever you need it. In addition, AI Katia can surf
+          the web, providing you with the latest information and helping you
+          stay informed by searching the web.
         </p>
       </div>
       <div className="flex flex-col sm:flex-row flex-wrap text-sm sm:text-base items-center gap-2">
         <ButtonWrapper
-          text={"Get started with AI katia"}
+          text={"Get started with AI Katia"}
           className={"bg-[#EBE9DE] text-black"}
         />
         <ButtonWrapper

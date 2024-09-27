@@ -3,10 +3,10 @@ const GetStarted = () => {
     <>
       <div className="mt-10 mb-3 bg-[#25262D] py-16 rounded-[20px] flex flex-col items-center px-6">
         <div className="font-polySans text-2xl sm:text-[40px] sm:leading-[56px] text-white text-center">
-          Get started with AI katia today
+          Get started with AI Katia today
         </div>
         <div className="mt-4 mb-8 text-[#94938D] text-base sm:text-sm">
-          Ready to explore synth? Request a demo today!
+          Ready to explore AI Katia? Request a demo today!
         </div>
         <div className="bg-[#EBE9DE] cursor-pointer flex px-8 py-3 rounded-2xl gap-2 text-sm leading-[21px]">
           <div>Get Started for free</div>
