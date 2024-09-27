@@ -5,7 +5,7 @@ export const contactFAQs = [
   },
   {
     title: "How does AI Katia work?",
-    desc: "Katia learns from every conversation, offering tailored advice and emotional support that gets better over time. She also surfs the web to provide you with the most up-to-date information and answers.",
+    desc: "AI Katia learns from every conversation, offering tailored advice and emotional support that gets better over time. She also surfs the web to provide you with the most up-to-date information and answers.",
   },
   {
     title: "What is included in the free trial?",
@@ -13,6 +13,6 @@ export const contactFAQs = [
   },
   {
     title: "Do you offer refunds?",
-    desc: "While we do not offer refunds, our 7-day free trial lets you experience everything Katia has to offer.",
+    desc: "While we do not offer refunds, our 7-day free trial lets you experience everything AI Katia has to offer.",
   },
 ];

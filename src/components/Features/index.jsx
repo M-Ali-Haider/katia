@@ -10,7 +10,7 @@ const Features = () => {
           </div>
           <div className="h-full flex flex-col items-end">
             <div className="py-3 px-8 rounded-2xl text-[#EBE9DE] border-[#5F5F5F] border border-solid cursor-pointer">
-              Start Your Journey with Katia
+              Start Your Journey with AI Katia
             </div>
           </div>
         </div>
