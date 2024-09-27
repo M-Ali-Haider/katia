@@ -21,6 +21,7 @@ const Landing = () => {
         <Image
           src={"/landing.png"}
           alt="landing page image"
+          quality={100}
           fill
           loading="eager"
         />

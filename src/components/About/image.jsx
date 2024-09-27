@@ -7,6 +7,7 @@ const AboutImage = () => {
         src={"/aboutus.png"}
         alt="about us katia image"
         fill
+        quality={100}
         loading="eager"
       />
     </div>
