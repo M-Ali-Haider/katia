@@ -8,7 +8,7 @@ const GetStarted = () => {
         <div className="mt-4 mb-8 text-[#94938D] text-base sm:text-sm">
           Ready to explore AI Katia? Request a demo today!
         </div>
-        <div className="bg-[#EBE9DE] cursor-pointer flex px-8 py-3 rounded-2xl gap-2 text-sm leading-[21px]">
+        <div className="bg-[#F5F3C2] cursor-pointer flex px-8 py-3 rounded-2xl gap-2 text-sm leading-[21px]">
           <div>Get Started for free</div>
           <ArrowSVG />
         </div>

@@ -12,7 +12,7 @@ const FreeTrialCard = () => {
           AI Katia offers full access to her personal companion features at a
           price tailored to your location.
         </div>
-        <div className="w-full rounded-2xl bg-[#EBE9DE] font-medium text-sm leading-[21px] text-center py-3 cursor-pointer">
+        <div className="w-full rounded-2xl bg-[#F5F3C2] font-medium text-sm leading-[21px] text-center py-3 cursor-pointer">
           Sign Up for Free Trial
         </div>
       </div>

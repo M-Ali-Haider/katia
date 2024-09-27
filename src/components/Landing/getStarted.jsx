@@ -19,7 +19,7 @@ const GetStarted = () => {
       <div className="flex flex-col sm:flex-row flex-wrap text-sm sm:text-base items-center gap-2">
         <ButtonWrapper
           text={"Get started with AI Katia"}
-          className={"bg-[#EBE9DE] text-black"}
+          className={"bg-[#F5F3C2] text-black"}
         />
         <ButtonWrapper
           text={"Watch demo"}
