@@ -2,6 +2,7 @@ import HeaderLogoSVG from "@/assets/Header/logo";
 import ActiveLinks from "./activeLinks";
 import BurgerMenu from "./burgerMenu";
 import LegalLinks from "./legalLinks";
+import Link from "next/link";
 
 const Header = ({ isLegal }) => {
   return (
@@ -14,7 +15,9 @@ const Header = ({ isLegal }) => {
         bg-[#101016] md:bg-[#25262D] md:rounded-2xl text-[#EBE9DE] pl-[22px] pr-4 md:px-6 h-[77px]"
       >
         <div className="h-full py-6 flex items-center">
-          <HeaderLogoSVG />
+          <Link href={"/"}>
+            <HeaderLogoSVG />
+          </Link>
         </div>
         {isLegal ? <LegalLinks /> : <ActiveLinks />}
         <div className="py-5 h-full md:flex items-center hidden">
