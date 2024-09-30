@@ -10,7 +10,7 @@ import Pricing from "../Pricing";
 const Home = () => {
   return (
     <>
-      <Header />
+      <Header isLegal={false} />
       <main className="flex items-center justify-center">
         <div className="max-w-[1296px] w-full px-5">
           <Landing />

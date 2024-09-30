@@ -3,7 +3,7 @@ import BurgerMenuSVG from "@/assets/Header/burgerMenu";
 import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
 
-const BurgerMenu = () => {
+const BurgerMenu = ({ isLegal }) => {
   const [isDropDownOpen, setDropDownStatus] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,9 @@ const BurgerMenu = () => {
         <BurgerMenuSVG />
       </div>
 
-      {isDropDownOpen && <Dropdown setDropDownStatus={setDropDownStatus} />}
+      {isDropDownOpen && (
+        <Dropdown isLegal={isLegal} setDropDownStatus={setDropDownStatus} />
+      )}
     </div>
   );
 };

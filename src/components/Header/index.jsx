@@ -1,8 +1,9 @@
 import HeaderLogoSVG from "@/assets/Header/logo";
 import ActiveLinks from "./activeLinks";
 import BurgerMenu from "./burgerMenu";
+import LegalLinks from "./legalLinks";
 
-const Header = () => {
+const Header = ({ isLegal }) => {
   return (
     <header
       className="flex items-center justify-center 
@@ -15,13 +16,13 @@ const Header = () => {
         <div className="h-full py-6 flex items-center">
           <HeaderLogoSVG />
         </div>
-        <ActiveLinks />
+        {isLegal ? <LegalLinks /> : <ActiveLinks />}
         <div className="py-5 h-full md:flex items-center hidden">
           <div className="text-sm px-6 py-2 cursor-pointer rounded-2xl border border-solid border-[#5F5F5F]">
             Log in
           </div>
         </div>
-        <BurgerMenu />
+        <BurgerMenu isLegal={isLegal} />
       </div>
     </header>
   );
