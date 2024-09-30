@@ -17,6 +17,7 @@ module.exports = {
       },
       fontFamily: {
         polySans: ["var(--font-polysans-median)"],
+        everett: ["var(--font-everett)"],
       },
       screens: {
         landing: "968px",
