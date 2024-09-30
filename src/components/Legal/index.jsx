@@ -69,11 +69,13 @@ const Legal = ({ item, isPrivacy }) => {
                       </div>
                       <div className="sm:flex flex-wrap text-sm sm:text-base">
                         {bullet.heading && (
-                          <div className="font-medium">
+                          <div className="font-bold text-base sm:text-lg">
                             {bullet.heading}&nbsp;
                           </div>
                         )}
-                        <div>{bullet.desc}</div>
+                        <div className="text-sm sm:text-base">
+                          {bullet.desc}
+                        </div>
                       </div>
                     </div>
                   ))}
