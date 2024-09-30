@@ -47,9 +47,9 @@ const Legal = ({ item, isPrivacy }) => {
                     {point.heading === "Data Security" && (
                       <p className="text-sm sm:text-base mb-[10px]">
                         All data is stored in compliance with the&nbsp;
-                        <Link href={"/"} className="font-bold text-white">
+                        <span className="font-bold text-white">
                           General Data Protection Regulation (GDPR)
-                        </Link>
+                        </span>
                         &nbsp;and other relevant data protection laws. We never
                         sell or share your data with third parties except as
                         required for service provision (e.g., payment
