@@ -21,6 +21,7 @@ module.exports = {
         inter: ["var(--font-inter)"],
       },
       screens: {
+        "3xl": "2000px",
         landing: "968px",
         footer: "860px",
       },

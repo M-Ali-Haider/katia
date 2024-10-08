@@ -6,7 +6,7 @@ const Checkbox = ({ isChecked, setIsChecked }) => {
           type="checkbox"
           onChange={() => setIsChecked(!isChecked)}
           checked={isChecked}
-          class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-[#D0D5DD] bg-[#25262D] checked:border-slate-800"
+          class="peer 2xl:h-6 2xl:w-6 h-5 w-5 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-[#D0D5DD] bg-[#25262D] checked:border-slate-800"
           id="check"
         />
         <span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">

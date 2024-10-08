@@ -9,7 +9,7 @@ const ContinueArrowSVG = (props) => (
   >
     <path
       d="M3.56836 8H14.235M14.235 8L10.235 4M14.235 8L10.235 12"
-      stroke="white"
+      stroke="#191B31"
       strokeWidth={1.25}
       strokeLinecap="round"
       strokeLinejoin="round"
