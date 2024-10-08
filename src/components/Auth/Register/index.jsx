@@ -31,8 +31,11 @@ const Register = () => {
           label={"Username*"}
         />
       </div>
-      <div className="my-6 w-full border-[#D0D5DD] border rounded-lg">
-        <ReCAPTCHA sitekey="Your client site key" />
+      <div className="my-6 w-full flex justify-center">
+        <ReCAPTCHA
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY}
+          theme="dark"
+        />
       </div>
       <ContinueButton />
       <SignUpGoogle />
