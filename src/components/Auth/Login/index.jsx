@@ -18,7 +18,11 @@ const Login = () => {
       <div className="mt-[18px] text-[#898A96] mb-10 3xl:text-lg">
         Welcome to Katia. Sign in to continue.
       </div>
-      <InputField type={"text"} placeholder={"Enter your email"} />
+      <InputField
+        type={"text"}
+        placeholder={"Enter your email"}
+        label={"Email*"}
+      />
       <div className="flex items-center gap-2 3xl:gap-3 mt-5">
         <Checkbox isChecked={isChecked} setIsChecked={setIsChecked} />
         <div className="text-sm 3xl:text-base">Keep me signed in</div>
@@ -45,7 +49,7 @@ function DontHaveAccount() {
 
 function SignUpGoogle() {
   return (
-    <div className="mt-4 bg-[#191B31] w-full rounded-lg flex items-center justify-center gap-3 py-3 3xl:py-4">
+    <div className="mt-4 bg-[#191B31] w-full rounded-lg flex items-center justify-center gap-3 py-3 3xl:py-4 cursor-pointer">
       <GoogleSVG />
       <span className="text-sm 3xl:text-base leading-[19.6px] font-medium">
         Sign up with Google

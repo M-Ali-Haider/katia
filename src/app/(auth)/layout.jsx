@@ -6,7 +6,7 @@ export default function AuthLayout({ children }) {
       <div className="w-full flex">
         <div className="flex-1 flex flex-col sm:flex-row items-center justify-center relative">
           {children}
-          <div className="left-8 bottom-8 mt-6 sm:mt-0 sm:absolute text-[#98A2B3] text-xs font-inter">
+          <div className="left-8 3xl:bottom-8 bottom-2 my-6 sm:mt-0 sm:absolute text-[#98A2B3] text-xs font-inter">
             Copyrights © 2024 katia. All Rights Reserved.
           </div>
         </div>

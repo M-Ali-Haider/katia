@@ -1,11 +1,11 @@
-const InputField = ({ type, placeholder }) => {
+const InputField = ({ type, placeholder, label }) => {
   return (
     <div className="w-full flex flex-col">
       <label
         htmlFor=""
         className="mb-2 font-medium text-xs 2xl:text-base font-inter text-white"
       >
-        Email*
+        {label}
       </label>
       <input
         type={type}
