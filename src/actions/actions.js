@@ -16,36 +16,30 @@ export const getSession = async () => {
   return session;
 };
 
-export const checkUsername = async (prevData, formData) => {
+export const checkEmail = async (prevData, formData) => {
   const session = await getSession();
   const formEmail = formData.get("email");
   if (formEmail !== email) {
     return { error: "We don't have an account with that email address." };
   }
-  session.userId = "1";
-  session.email = formEmail;
-  session.isLoggedIn = true;
+  return { success: true };
+};
 
+export const checkPassword = async (prevData, formData) => {
+  const session = await getSession();
+  const formPassword = formData.get("password");
+  if (formPassword !== password) {
+    return { error: "That’s an incorrect password. Try again." };
+  }
+  session.userId = "1";
+  session.isLoggedIn = true;
   await session.save();
   redirect("/dashboard");
 };
 
-// export const checkPassword = async (formData) => {
-//   const session = await getSession();
-//   const formEmail = formData.get("email");
-//   if (formEmail !== email) {
-//     return { error: "That’s an incorrect password. Try again." };
-//   }
-//   //I want to save username in the session as well idk how i can do that
-//   session.userId = "1";
-//   //session.username = formUsername;
-//   session.isLoggedIn = true;
-//   await session.save();
-//   redirect("/dashboard");
-// };
-
 export const logout = async () => {
   const session = await getSession();
+  console.log(session);
   session.destroy();
   redirect("/login");
 };

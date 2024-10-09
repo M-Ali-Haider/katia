@@ -6,6 +6,7 @@ import PasswordSequence from "./password";
 import EmailSequence from "./email";
 const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [isEmailSequenceComplete, setEmailSequenceStatus] = useState(false);
 
   return (
     <div className="text-white font-inter 3xl:max-w-[500px] max-w-[360px] w-full mt-12 sm:my-20">
@@ -16,8 +17,15 @@ const Login = () => {
       <div className="mt-[18px] text-[#898A96] mb-10 3xl:text-lg">
         Welcome to Katia. Sign in to continue.
       </div>
-      <EmailSequence isChecked={isChecked} setIsChecked={setIsChecked} />
-      {/* <PasswordSequence /> */}
+      {!isEmailSequenceComplete ? (
+        <EmailSequence
+          isChecked={isChecked}
+          setIsChecked={setIsChecked}
+          setEmailSequenceStatus={setEmailSequenceStatus}
+        />
+      ) : (
+        <PasswordSequence />
+      )}
       <DontHaveAccount />
     </div>
   );

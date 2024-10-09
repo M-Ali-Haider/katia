@@ -1,13 +1,20 @@
 "use client";
-import { checkUsername } from "@/actions/actions";
+import { checkEmail } from "@/actions/actions";
 import Checkbox from "../checkbox";
 import InputField from "../inputfield";
 import SignUpGoogle from "./google";
 import SubmitButton from "./submitButton";
 import { useFormState } from "react-dom";
 
-const EmailSequence = ({ setIsChecked, isChecked }) => {
-  const [state, formAction] = useFormState(checkUsername, undefined);
+const EmailSequence = ({ setIsChecked, isChecked, setEmailSequenceStatus }) => {
+  const [state, formAction] = useFormState(async (prevData, formData) => {
+    const result = await checkEmail(prevData, formData);
+    if (result.success) {
+      setEmailSequenceStatus(true);
+    }
+    return result;
+  }, undefined);
+
   return (
     <>
       <form action={formAction}>
@@ -15,7 +22,7 @@ const EmailSequence = ({ setIsChecked, isChecked }) => {
           type={"text"}
           placeholder={"Enter your email"}
           label={"Email*"}
-          name={"email"}
+          name="email"
         />
         {state?.error && (
           <p className="text-[#F04438] font-inter text-xs my-4">
