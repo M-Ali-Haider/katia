@@ -8,7 +8,7 @@ const Register = () => {
   return (
     <div className="text-white font-inter 3xl:max-w-[500px] max-w-[360px] w-full mt-12 sm:my-20">
       <div className="text-[28px] leading-[33.6px] font-semibold mt-10 3xl:text-4xl">
-        Sign in
+        Sign Up
       </div>
       <div className="mt-[18px] text-[#898A96] mb-10 3xl:text-lg">
         Enter your details to continue.
