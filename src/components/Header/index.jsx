@@ -21,9 +21,12 @@ const Header = ({ isLegal }) => {
         </div>
         {isLegal ? <LegalLinks /> : <ActiveLinks />}
         <div className="py-5 h-full md:flex items-center hidden">
-          <div className="text-sm px-6 py-2 cursor-pointer rounded-2xl border border-solid border-[#5F5F5F]">
+          <Link
+            href="/login"
+            className="text-sm px-6 py-2 cursor-pointer rounded-2xl border border-solid border-[#5F5F5F]"
+          >
             Log in
-          </div>
+          </Link>
         </div>
         <BurgerMenu isLegal={isLegal} />
       </div>
