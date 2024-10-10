@@ -8,6 +8,7 @@ const InputField = ({ type, placeholder, label, name }) => {
         {label}
       </label>
       <input
+        autocomplete="off"
         type={type}
         placeholder={placeholder}
         name={name}

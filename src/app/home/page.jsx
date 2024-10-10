@@ -1,6 +1,6 @@
 import { logout } from "@/actions/actions";
 
-const DashboardPage = () => {
+const Homepage = () => {
   return (
     <div
       className="text-white min-h-screen flex flex-col gap-4 
@@ -13,7 +13,7 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default Homepage;
 
 export function Logout() {
   return (

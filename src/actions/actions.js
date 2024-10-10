@@ -34,7 +34,7 @@ export const checkPassword = async (prevData, formData) => {
   session.userId = "1";
   session.isLoggedIn = true;
   await session.save();
-  redirect("/dashboard");
+  redirect("/home");
 };
 
 export const logout = async () => {
