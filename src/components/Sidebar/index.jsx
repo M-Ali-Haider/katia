@@ -16,9 +16,9 @@ const Sidebar = () => {
           : `-left-[315px] sm:w-0 pointer-events-none`
       } h-screen max-h-screen overflow-x-hidden flex 
       duration-500 ease-custom-ease transition-all
-      fixed sm:static top-0 right-0 bottom-0 z-10`}
+      fixed top-0 right-0 bottom-0 z-10 sm:static`}
     >
-      <div className="w-[315px] px-5 bg-[#0E0F21] border-r border-[#353741] ">
+      <div className="w-[315px] px-5 bg-[#0E0F21] border-r border-[#353741] h-screen max-h-screen flex flex-col">
         <ProfileDetails className={"mt-10"} />
         <AIKatiaPlusButton className={"mt-[30px]"} />
         <History />
