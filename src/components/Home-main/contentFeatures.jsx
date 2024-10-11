@@ -1,5 +1,5 @@
 import { contentFeatures } from "@/utils/contentFeatures";
-
+import styles from "./style.module.css";
 const ContentFeatures = () => {
   return (
     <div className="max-w-[295px] sm:max-w-full w-full flex flex-col items-center mb-12">
@@ -7,12 +7,14 @@ const ContentFeatures = () => {
       <div className="mt-[30px] font-inter font-semibold text-2xl leading-[29.05px] sm:text-4xl">
         Features
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-[10px] sm:gap-y-4 mt-5 sm:mt-12 w-full">
+      <div
+        className={`grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-[10px] sm:gap-y-4 mt-5 sm:mt-12 w-full ${styles.contentFeatures}`}
+      >
         {contentFeatures.map((item, index) => (
           <div
-            className="bg-[#0E0F21] rounded-xl w-full text-[#DADBDE] 
+            className={`bg-[#0E0F21] rounded-xl w-full text-[#DADBDE] 
             text-xs leading-[18px] font-inter py-[14px] 
-            flex flex-col items-center justify-center sm:text-sm"
+            flex flex-col items-center justify-center sm:text-sm`}
             key={index}
           >
             <div>{item.title}</div>

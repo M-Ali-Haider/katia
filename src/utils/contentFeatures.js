@@ -11,4 +11,8 @@ export const contentFeatures = [
     title: "Conversational AI",
     desc: "(I can talk to you like a human being)",
   },
+  {
+    title: "Answer all your questions.",
+    desc: "(Just ask me anything you like)",
+  },
 ];
