@@ -2,7 +2,7 @@ import { contentFeatures } from "@/utils/contentFeatures";
 import styles from "./style.module.css";
 const ContentFeatures = () => {
   return (
-    <div className="max-w-[295px] sm:max-w-full w-full flex flex-col items-center mb-12">
+    <div className="max-w-full w-full flex flex-col items-center mb-12">
       <ContentLogoSVG className="w-20 h-20 sm:w-32 sm:h-32" />
       <div className="mt-[30px] font-inter font-semibold text-2xl leading-[29.05px] sm:text-4xl">
         Features
