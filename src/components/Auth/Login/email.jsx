@@ -7,13 +7,16 @@ import SubmitButton from "./submitButton";
 import { useFormState } from "react-dom";
 
 const EmailSequence = ({ setIsChecked, isChecked, setEmailSequenceStatus }) => {
-  const [state, formAction] = useFormState(async (prevData, formData) => {
-    const result = await checkEmail(prevData, formData);
-    if (result.success) {
-      setEmailSequenceStatus(true);
-    }
-    return result;
-  }, undefined);
+  const [state, formAction, pending] = useFormState(
+    async (prevData, formData) => {
+      const result = await checkEmail(prevData, formData);
+      if (result.success) {
+        setEmailSequenceStatus(true);
+      }
+      return result;
+    },
+    undefined
+  );
 
   return (
     <>
@@ -23,6 +26,7 @@ const EmailSequence = ({ setIsChecked, isChecked, setEmailSequenceStatus }) => {
           placeholder={"Enter your email"}
           label={"Email*"}
           name="email"
+          hasError={state?.error}
         />
         {state?.error && (
           <p className="text-[#F04438] font-inter text-xs my-4">
@@ -37,7 +41,7 @@ const EmailSequence = ({ setIsChecked, isChecked, setEmailSequenceStatus }) => {
           <Checkbox isChecked={isChecked} setIsChecked={setIsChecked} />
           <div className="text-sm 3xl:text-base">Keep me signed in</div>
         </div>
-        <SubmitButton text={"Continue"} className={"mt-6"} />
+        <SubmitButton text={"Continue"} pending={pending} className={"mt-6"} />
         <SignUpGoogle />
       </form>
     </>

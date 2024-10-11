@@ -17,12 +17,13 @@ const PasswordSequence = () => {
           placeholder={"Enter your password"}
           label={"Password*"}
           name={"password"}
+          hasError={state?.error}
         />
         {state?.error && (
           <p className="text-[#EC6853] text-xs mt-5">{state.error}</p>
         )}
         <div className="text-[#F5F3C2] text-sm font-medium font-inter my-6 w-full flex items-center justify-center">
-          <Link href="/">Forgot your password?</Link>
+          <Link href="/forgot-password">Forgot your password?</Link>
         </div>
         <div className="my-6 w-full flex justify-center">
           <ReCAPTCHA

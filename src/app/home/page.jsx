@@ -1,6 +1,10 @@
-import { logout } from "@/actions/actions";
-
-const Homepage = () => {
+import { getSession, logout } from "@/actions/actions";
+import { redirect } from "next/navigation";
+const Homepage = async () => {
+  const session = await getSession();
+  if (!session.isLoggedIn) {
+    redirect("/login");
+  }
   return (
     <div
       className="text-white min-h-screen flex flex-col gap-4 
