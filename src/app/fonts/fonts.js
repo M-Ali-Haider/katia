@@ -40,3 +40,14 @@ export const TWKEverett = localFont({
   ],
   variable: "--font-everett",
 });
+
+export const ProximaNova = localFont({
+  src: [
+    {
+      path: "./proximaNovaRegular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-proximaNova",
+});

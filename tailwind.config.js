@@ -19,6 +19,7 @@ module.exports = {
         polySans: ["var(--font-polysans-median)"],
         everett: ["var(--font-everett)"],
         inter: ["var(--font-inter)"],
+        proximaNova: ["var(--font-proximaNova)"],
       },
       screens: {
         "3xl": "2000px",

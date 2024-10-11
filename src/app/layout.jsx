@@ -2,7 +2,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import { Plus_Jakarta_Sans } from "next/font/google";
-import { TWKEverett, inter } from "./fonts/fonts";
+import { TWKEverett, inter, ProximaNova } from "./fonts/fonts";
+import { ReduxStoreProvider } from "@/providers/ReduxProvider";
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -26,9 +27,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${TWKEverett.variable} ${inter.variable} ${plusJakartaSans.className} ${polySans.variable} antialiased bg-[#101016]`}
+        className={`${TWKEverett.variable} ${inter.variable} ${ProximaNova.variable} ${plusJakartaSans.className} ${polySans.variable} antialiased bg-[#101016]`}
       >
-        {children}
+        <ReduxStoreProvider>{children}</ReduxStoreProvider>
       </body>
     </html>
   );
