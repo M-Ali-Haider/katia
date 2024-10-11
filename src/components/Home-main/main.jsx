@@ -13,7 +13,7 @@ const HomeMain = () => {
         <BurgerMenu />
         <Logout />
       </div>
-      <div className="max-w-[768px] w-full flex flex-col justify-center sm:border pb-8">
+      <div className="max-w-[768px] w-full flex flex-col justify-center pb-8">
         <Content />
         <PromptInput />
       </div>
