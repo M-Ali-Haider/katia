@@ -6,10 +6,7 @@ const BurgerMenu = () => {
   const isSidebarOpen = useSelector((state) => state.sidebar.isSidebarOpen);
   const dispatch = useDispatch();
   return (
-    <button
-      onClick={() => dispatch(handleSidebar())}
-      className="absolute top-2 left-5 border-none"
-    >
+    <button onClick={() => dispatch(handleSidebar())} className="border-none">
       <BurgerMenuSVG />
     </button>
   );
