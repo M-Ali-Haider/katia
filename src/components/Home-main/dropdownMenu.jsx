@@ -1,0 +1,34 @@
+import { dropdownMenuOptions } from "@/utils/dropdownMenu";
+import Link from "next/link";
+import { Logout } from "../Logout";
+
+const DropdownMenu = ({ containerRef, isDropDownOpen }) => {
+  return (
+    <div
+      ref={containerRef}
+      className={`${
+        isDropDownOpen
+          ? "opacity-100 scale-100 pointer-events-auto"
+          : "scale-75 opacity-0 pointer-events-none"
+      } rounded-xl absolute top-[calc(100%+16px)] right-0
+        w-[250px] bg-[#0e0f21] overflow-hidden
+        ease-custom-ease transition-all duration-300 font-inter`}
+    >
+      {dropdownMenuOptions.map((item, index) => (
+        <div
+          key={index}
+          className={`${
+            item.title === "Clear Chat History" && "text-[#EC6853]"
+          } block w-full pl-6 py-[15px] text-sm leading-[18.4px] hover:bg-[#282a5c] cursor-pointer`}
+        >
+          {item.title}
+        </div>
+      ))}
+      <div className="p-2">
+        <Logout className={"w-full text-sm leading-[18px]"} />
+      </div>
+    </div>
+  );
+};
+
+export default DropdownMenu;

@@ -1,0 +1,49 @@
+"use client";
+import Image from "next/image";
+import DropdownMenu from "./dropdownMenu";
+import { useEffect, useRef, useState } from "react";
+
+const Pfp = () => {
+  const [isDropDownOpen, setDropDownStatus] = useState(false);
+  const dropdownRef = useRef(null);
+  const triggerRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        !triggerRef.current.contains(event.target)
+      ) {
+        setDropDownStatus(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
+
+  return (
+    <div className="absolute top-4 right-4 w-12 h-12">
+      <div className="w-full h-full relative">
+        <DropdownMenu
+          containerRef={dropdownRef}
+          isDropDownOpen={isDropDownOpen}
+        />
+      </div>
+      <Image
+        ref={triggerRef}
+        onClick={() => setDropDownStatus(!isDropDownOpen)}
+        src={"/user.png"}
+        alt="pfp image"
+        // width={48}
+        // height={48}
+        fill
+        className="rounded-full cursor-pointer"
+      />
+    </div>
+  );
+};
+
+export default Pfp;

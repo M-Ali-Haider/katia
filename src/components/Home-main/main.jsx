@@ -1,7 +1,6 @@
-import { logout } from "@/actions/actions";
-import BurgerMenu from "./burgerMenu";
-import PromptInput from "./promptInput";
 import Content from "./content";
+import Pfp from "./pfp";
+import PromptInput from "./promptInput";
 
 const HomeMain = () => {
   return (
@@ -9,10 +8,7 @@ const HomeMain = () => {
       className="flex-1 bg-[#191B31] px-5 flex justify-center 
       relative duration-500 ease-custom-ease transition-all h-svh sm:h-screen"
     >
-      <div className="absolute top-4 flex items-center justify-between right-4 left-4">
-        <BurgerMenu />
-        <Logout />
-      </div>
+      <Pfp />
       <div className="max-w-[768px] w-full flex flex-col justify-center pb-8">
         <Content />
         <PromptInput />
@@ -22,13 +18,3 @@ const HomeMain = () => {
 };
 
 export default HomeMain;
-
-export function Logout() {
-  return (
-    <form action={logout}>
-      <button className="bg-[#F5F3C2] py-3 px-8 rounded-lg text-black">
-        Logout
-      </button>
-    </form>
-  );
-}

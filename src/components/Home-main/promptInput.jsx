@@ -6,10 +6,10 @@ const PromptInput = () => {
     setInputValue(e.target.value);
   };
   return (
-    <div className="flex gap-[10px] items-center py-[13.5px] border-[#898A96] border rounded-xl px-4 sm:px-6 bg-[#0E0F21]">
+    <div className="flex gap-[10px] items-center  border-[#898A96] border rounded-xl px-4 sm:pl-6 sm:pr-3 bg-[#0E0F21]">
       <input
         type="text"
-        className="bg-transparent flex-1 text-sm leading-[22px] sm:text-base focus:outline-none"
+        className="bg-transparent flex-1 py-[13.5px] text-sm leading-[22px] sm:text-base focus:outline-none"
         placeholder="Ask..."
         value={inputValue}
         onChange={handleInputChange}
@@ -23,7 +23,7 @@ const PromptInput = () => {
       >
         <PromptSendButtonSVG
           isInput={inputValue === ""}
-          className="w-5 h-5 sm:w-7 sm:h-7"
+          className="w-5 h-5 sm:w-6 sm:h-6"
         />
       </button>
     </div>
