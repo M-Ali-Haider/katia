@@ -1,7 +1,7 @@
 export const dropdownMenuOptions = [
-  { title: "Account", href: "/" },
-  { title: "Change Password", href: "/" },
-  { title: "Payment Method", href: "/" },
+  { title: "Account", href: "/settings/account" },
+  { title: "Change Password", href: "/settings/change-password" },
+  { title: "Payment Method", href: "/settings/payment" },
   { title: "Clear Chat History", href: "/" },
   { title: "About Us", href: "/" },
   { title: "Terms of Service", href: "/terms" },

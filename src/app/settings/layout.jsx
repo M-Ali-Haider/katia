@@ -2,10 +2,14 @@ import BackArrowSVG from "@/assets/Settings/backArrow";
 import Navbar from "@/components/Settings/Navbar";
 import Link from "next/link";
 import styles from "./style.module.css";
+import BurgerMenu from "@/components/Settings/burgerMenu";
+import Sidebar from "@/components/Sidebar";
 
 const SettingsLayout = ({ children }) => {
   return (
-    <div className="pt-16 text-white font-inter flex items-center justify-center relative">
+    <div className="pt-16 text-white font-inter flex items-center justify-center relative px-5">
+      <BurgerMenu />
+      <Sidebar />
       <div className={`max-w-[1280px] w-full`}>
         <Link
           href={"/home"}

@@ -15,14 +15,15 @@ const DropdownMenu = ({ containerRef, isDropDownOpen }) => {
         ease-custom-ease transition-all duration-300 font-inter`}
     >
       {dropdownMenuOptions.map((item, index) => (
-        <div
+        <Link
+          href={item.href}
           key={index}
           className={`${
             item.title === "Clear Chat History" && "text-[#EC6853]"
           } block w-full pl-6 py-[15px] text-sm leading-[18.4px] hover:bg-[#282a5c] cursor-pointer`}
         >
           {item.title}
-        </div>
+        </Link>
       ))}
       <div className="p-2">
         <Logout className={"w-full text-sm leading-[18px]"} />

@@ -1,12 +1,14 @@
 "use client";
 import { handleSidebar } from "@/store/sidebar";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const BurgerMenu = () => {
-  const isSidebarOpen = useSelector((state) => state.sidebar.isSidebarOpen);
   const dispatch = useDispatch();
   return (
-    <button onClick={() => dispatch(handleSidebar())} className="border-none">
+    <button
+      onClick={() => dispatch(handleSidebar())}
+      className="border-none absolute top-4 left-4 md:hidden z-[100]"
+    >
       <BurgerMenuSVG />
     </button>
   );
