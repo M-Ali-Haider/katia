@@ -1,9 +1,10 @@
 import ContentFeatures from "./contentFeatures";
+import ContentGenerated from "./contentGenerated";
 
-const Content = () => {
+const Content = ({ isSubmit }) => {
   return (
-    <div className="flex-1 flex items-end justify-center">
-      <ContentFeatures />
+    <div className="flex-1 flex items-end justify-center max-h-full">
+      {isSubmit ? <ContentGenerated /> : <ContentFeatures />}
     </div>
   );
 };

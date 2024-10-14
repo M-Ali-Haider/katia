@@ -1,6 +1,13 @@
+import { getSession } from "@/actions/actions";
 import AuthRight from "@/components/Auth/right";
+import { redirect } from "next/navigation";
 
-export default function AuthLayout({ children }) {
+export default async function AuthLayout({ children }) {
+  const session = await getSession();
+  if (session.isLoggedIn) {
+    redirect("/home");
+  }
+
   return (
     <div className="flex justify-center bg-[#0B0B0E] min-h-screen px-6 lg:px-0">
       <div className="w-full flex">
