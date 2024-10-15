@@ -13,7 +13,7 @@ const HomeMain = () => {
       relative duration-500 ease-custom-ease transition-all h-svh sm:h-screen"
     >
       <Pfp />
-      <div className="max-w-[768px] w-full flex flex-col justify-center pb-8">
+      <div className="max-w-[768px] w-full flex flex-col justify-end pb-8">
         <Content isSubmit={isSubmit} />
         <PromptInput setIsSubmit={setIsSubmit} />
       </div>

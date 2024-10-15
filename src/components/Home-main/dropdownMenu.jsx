@@ -12,7 +12,7 @@ const DropdownMenu = ({ containerRef, isDropDownOpen }) => {
           : "scale-75 opacity-0 pointer-events-none"
       } rounded-xl absolute top-[calc(100%+16px)] right-0
         w-[250px] bg-[#0e0f21] overflow-hidden
-        ease-custom-ease transition-all duration-300 font-inter`}
+        ease-custom-ease transition-all duration-300 font-inter z-50`}
     >
       {dropdownMenuOptions.map((item, index) => (
         <Link

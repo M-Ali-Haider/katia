@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const ContentGenerated = () => {
   return (
-    <div className="w-full h-full pt-14 flex flex-col gap-6 overflow-y-scroll">
+    <div className="w-full h-full flex flex-col gap-6 overflow-y-scroll text-sm sm:text-base pb-8 pt-4 sm:pt-9">
       {chat.map((item, index) => (
         <div
           key={index}

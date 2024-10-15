@@ -4,7 +4,7 @@ export const settings = [
     subHeadings: [
       { title: "Account", href: "/settings/account" },
       { title: "Change Password", href: "/settings/change-password" },
-      { title: "Payment Method", href: "/settings/payment" },
+      { title: "Billing Management", href: "/settings/billing" },
     ],
   },
   {
