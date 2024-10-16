@@ -30,8 +30,7 @@ const appearance = {
   },
 };
 
-const Stripe = () => {
-  const amount = 49.99;
+const Stripe = ({ amount }) => {
   return (
     <div className="p-8 border rounded-xl mt-8">
       <Elements

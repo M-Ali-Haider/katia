@@ -83,7 +83,7 @@ const CheckOutPage = ({ amount }) => {
       {clientSecret && <PaymentElement />}
 
       <CustomButton
-        text={`${!loading ? `Pay the ${amount}` : `Processing...`}`}
+        text={`${!loading ? `Pay the $${amount.toFixed(2)}` : `Processing...`}`}
         className={"max-w-[300px] mt-8"}
       />
     </form>
