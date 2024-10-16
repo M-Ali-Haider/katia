@@ -1,12 +1,7 @@
-import Heading from "@/components/Settings/heading";
+import BillingManagement from "@/components/Billing";
 
 const PaymentPage = () => {
-  return (
-    <div>
-      <Heading text={"Billing Management"} className={"mb-4"} />
-      <div className="p-8 border rounded-xl"></div>
-    </div>
-  );
+  return <BillingManagement />;
 };
 
 export default PaymentPage;
