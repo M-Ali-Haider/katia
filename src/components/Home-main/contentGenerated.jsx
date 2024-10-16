@@ -1,8 +1,20 @@
+import CopySVG from "@/assets/Content/copy";
 import ChatLogoSVG from "@/assets/Content/logo";
 import { chat } from "@/utils/chat";
 import Image from "next/image";
 
 const ContentGenerated = () => {
+  const handleCopy = (content) => {
+    navigator.clipboard
+      .writeText(content)
+      .then(() => {
+        console.log("Copied to clipboard");
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
+  };
+
   return (
     <div className="w-full h-full flex flex-col gap-6 overflow-y-scroll text-sm sm:text-base pb-8 pt-4 sm:pt-9">
       {chat.map((item, index) => (
@@ -27,6 +39,17 @@ const ContentGenerated = () => {
           >
             {item.content}
           </div>
+
+          {/* Copy UI */}
+          {item.role === "assistant" && (
+            <div
+              onClick={() => handleCopy(item.content)}
+              className="w-7 h-7 flex items-center justify-center hover:bg-[#0E0F21] 
+              transition duration-100 cursor-pointer rounded-md -ml-1 active:scale-90"
+            >
+              <CopySVG className="w-[18px] h-[18px]" />
+            </div>
+          )}
 
           {item.role === "user" && (
             <div className="">
