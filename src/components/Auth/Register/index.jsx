@@ -70,7 +70,7 @@ function SignUpGoogle() {
 
 function ContinueButton() {
   return (
-    <div className="cursor-pointer w-full bg-[#F5F3C2] text-[#191B31] rounded-lg flex items-center justify-center gap-2 py-[14px] 3xl:py-[18px]">
+    <div className="active:scale-95 transition duration-100 cursor-pointer w-full bg-[#F5F3C2] text-[#191B31] rounded-lg flex items-center justify-center gap-2 py-[14px] 3xl:py-[18px]">
       <span className="text-sm 3xl:text-base leading-[19.6px] font-medium">
         Continue
       </span>

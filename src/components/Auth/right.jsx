@@ -7,9 +7,9 @@ const AuthRight = () => {
         <div className="aspect-[412/496] w-full relative overflow-hidden rounded-3xl">
           <Image
             alt="auth center image"
-            src="/authcenter.jpg"
+            src="/KatiaLive.webp"
             fill
-            priority="eager"
+            loading="eager"
             className="object-cover"
           />
         </div>

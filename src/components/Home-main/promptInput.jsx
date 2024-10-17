@@ -35,7 +35,7 @@ const PromptInput = ({ setIsSubmit }) => {
           inputValue === ""
             ? "bg-[#25262D] pointer-events-none"
             : "bg-[#F5F3C2] pointer-events-auto"
-        }  flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded border-none`}
+        }  flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded border-none active:scale-90 transition duration-100`}
       >
         <PromptSendButtonSVG
           isInput={inputValue === ""}

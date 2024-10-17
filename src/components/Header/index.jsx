@@ -23,7 +23,7 @@ const Header = ({ isLegal }) => {
         <div className="py-5 h-full md:flex items-center hidden">
           <Link
             href="/login"
-            className="text-sm px-6 py-2 cursor-pointer rounded-2xl border border-solid border-[#5F5F5F]"
+            className="hover:bg-[#41424e] active:scale-95 text-sm px-6 py-2 cursor-pointer rounded-2xl border border-solid border-[#5F5F5F] transition duration-100"
           >
             Log in
           </Link>
