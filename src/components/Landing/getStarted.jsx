@@ -35,7 +35,7 @@ export default GetStarted;
 function ButtonWrapper({ text, className }) {
   return (
     <div
-      className={`w-full sm:w-auto text-center py-3 px-5 sm:px-8 rounded-2xl cursor-pointer ${className}`}
+      className={`active:scale-95 transition duration-100 w-full sm:w-auto text-center py-3 px-5 sm:px-8 rounded-2xl cursor-pointer ${className}`}
     >
       {text}
     </div>
