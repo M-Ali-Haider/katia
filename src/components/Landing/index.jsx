@@ -18,13 +18,16 @@ const Landing = () => {
         </div>
       </div>
       <div className="mt-[60px] mb-[80px] sm:mb-0 sm:mt-28 relative aspect-[1257/618]">
-        <Image
+        {/* <Image
           src={"/landing.png"}
           alt="landing page image"
           quality={100}
           fill
           loading="eager"
-        />
+        /> */}
+        <video controls className="w-full h-full">
+          <source src="/katia.mp4" type="video/mp4" />
+        </video>
       </div>
     </>
   );
