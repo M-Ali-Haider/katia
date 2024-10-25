@@ -1,8 +1,6 @@
-import ArrowSVG from "@/assets/Landing/arrow";
+import GetStarted from "./getStarted";
 import Introducing from "./introducing";
 import Redefining from "./redefining";
-import GetStarted from "./getStarted";
-import Image from "next/image";
 
 const Landing = () => {
   return (
@@ -18,15 +16,20 @@ const Landing = () => {
         </div>
       </div>
       <div className="mt-[60px] mb-[80px] sm:mb-0 sm:mt-28 relative aspect-[1257/618]">
-        {/* <Image
-          src={"/landing.png"}
-          alt="landing page image"
-          quality={100}
-          fill
-          loading="eager"
-        /> */}
-        <video controls className="w-full h-full">
+        <video
+          poster="/landing.png"
+          controls
+          preload="none"
+          className="w-full h-full"
+        >
           <source src="/katia.mp4" type="video/mp4" />
+          {/* <track
+            src="/path/to/captions.vtt"
+            kind="subtitles"
+            srcLang="en"
+            label="English"
+          /> */}
+          Your browser does not support the video tag.
         </video>
       </div>
     </>
