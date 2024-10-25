@@ -5,16 +5,12 @@ const FAQCard = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div
-      onClick={() => setIsOpen(true)}
+      onClick={() => setIsOpen((prev) => !prev)}
       className={`${
         isOpen ? "bg-[#25262D] pb-[39px]" : "bg-[#101010] pb-[22px]"
       } cursor-pointer pt-[22px] px-6 rounded-xl ease-custom-ease duration-300 transition-all relative pr-12`}
     >
       <div
-        onClick={(e) => {
-          e.stopPropagation();
-          setIsOpen((prev) => !prev);
-        }}
         className={`${
           isOpen ? "rotate-180" : "rotate-0"
         } ease-custom-ease duration-300 transition-all absolute top-[22px] right-[24px]`}
