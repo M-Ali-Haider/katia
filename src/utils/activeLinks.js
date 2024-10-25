@@ -4,7 +4,7 @@ export const activeLinks = [
   { title: "Features", id: "#features" },
   { title: "Pricing", id: "#pricing" },
   { title: "Testimonials", id: "#testimonials" },
-  { title: "Contact Us", id: "#contact" },
+  { title: "Contact Us", id: "#faqs" },
 ];
 
 // export const scrollToSection = (id) => {

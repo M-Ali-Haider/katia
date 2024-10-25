@@ -1,4 +1,4 @@
-const ContactLeft = () => {
+const FAQLeft = () => {
   return (
     <div className="max-w-[361px] w-full">
       <div className="font-polySans text-white mb-5 sm:text-[40px] sm:leading-[56px] text-3xl">
@@ -11,4 +11,4 @@ const ContactLeft = () => {
   );
 };
 
-export default ContactLeft;
+export default FAQLeft;
