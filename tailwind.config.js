@@ -25,6 +25,7 @@ module.exports = {
         "3xl": "2000px",
         landing: "968px",
         footer: "860px",
+        header: "930px",
       },
     },
   },

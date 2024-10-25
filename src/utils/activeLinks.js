@@ -3,6 +3,7 @@ export const activeLinks = [
   { title: "About Us", id: "#about" },
   { title: "Features", id: "#features" },
   { title: "Pricing", id: "#pricing" },
+  { title: "Testimonials", id: "#testimonials" },
   { title: "Contact Us", id: "#contact" },
 ];
 

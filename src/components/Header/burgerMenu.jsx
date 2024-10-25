@@ -18,7 +18,7 @@ const BurgerMenu = ({ isLegal }) => {
   }, [isDropDownOpen]);
 
   return (
-    <div className={`md:hidden block w-[30px] h-[30px] relative`}>
+    <div className={`header:hidden block w-[30px] h-[30px] relative`}>
       <div
         onClick={() => setDropDownStatus(isDropDownOpen ? false : true)}
         className={`${
