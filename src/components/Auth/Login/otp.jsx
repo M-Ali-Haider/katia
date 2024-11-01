@@ -1,10 +1,8 @@
 import { checkOTP } from "@/actions/actions";
-import { useState } from "react";
-import OTPInput from "react-otp-input";
-import SubmitButton from "./submitButton";
+import AuthLogoSVG from "@/assets/Auth/logo";
 import { useFormState } from "react-dom";
 import InputField from "../inputfield";
-import AuthLogoSVG from "@/assets/Auth/logo";
+import SubmitButton from "./submitButton";
 
 const OTPSequence = () => {
   const [state, formAction] = useFormState(checkOTP, undefined);
@@ -21,7 +19,7 @@ const OTPSequence = () => {
       </div>
       <form action={formAction}>
         <InputField
-          type={"text"}
+          type={"number"}
           placeholder={"Authentication Code"}
           label={"OTP*"}
           name={"otp"}
