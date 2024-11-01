@@ -5,12 +5,29 @@ import ReCAPTCHA from "react-google-recaptcha";
 import InputField from "../inputfield";
 import SignUpGoogle from "./google";
 import SubmitButton from "./submitButton";
+import AuthLogoSVG from "@/assets/Auth/logo";
 
-const PasswordSequence = () => {
-  const [state, formAction] = useFormState(checkPassword, undefined);
+const PasswordSequence = ({ setPasswordSequenceStatus }) => {
+  const [state, formAction, pending] = useFormState(
+    async (prevData, formData) => {
+      const result = await checkPassword(prevData, formData);
+      if (result.success) {
+        setPasswordSequenceStatus(true);
+      }
+      return result;
+    },
+    undefined
+  );
 
   return (
     <>
+      <AuthLogoSVG className="w-16 h-16 3xl:w-24 3xl:h-24" />
+      <div className="text-[28px] leading-[33.6px] font-semibold mt-10 3xl:text-4xl">
+        Sign in
+      </div>
+      <div className="mt-[18px] text-[#898A96] mb-10 3xl:text-lg">
+        Welcome to Katia. Sign in to continue.
+      </div>
       <form action={formAction}>
         <InputField
           type={"text"}
@@ -31,7 +48,7 @@ const PasswordSequence = () => {
             theme="dark"
           />
         </div>
-        <SubmitButton text={"Sign in"} />
+        <SubmitButton text={"Sign in"} pending={pending} />
         <SignUpGoogle />
       </form>
     </>

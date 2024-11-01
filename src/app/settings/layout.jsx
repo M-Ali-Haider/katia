@@ -20,7 +20,7 @@ const SettingsLayout = ({ children }) => {
         </Link>
         <div className="w-full flex gap-8 mt-4">
           <Navbar />
-          <div className="flex-1">{children}</div>
+          <div className="flex-1 pb-14">{children}</div>
         </div>
       </div>
     </div>
