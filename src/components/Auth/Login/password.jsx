@@ -6,8 +6,10 @@ import InputField from "../inputfield";
 import SignUpGoogle from "./google";
 import SubmitButton from "./submitButton";
 import AuthLogoSVG from "@/assets/Auth/logo";
+import { useState } from "react";
 
 const PasswordSequence = ({ setPasswordSequenceStatus }) => {
+  const [recaptchaCompleted, setRecaptchaCompleted] = useState(false);
   const [state, formAction, pending] = useFormState(
     async (prevData, formData) => {
       const result = await checkPassword(prevData, formData);
@@ -18,6 +20,10 @@ const PasswordSequence = ({ setPasswordSequenceStatus }) => {
     },
     undefined
   );
+
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaCompleted(!!value);
+  };
 
   return (
     <>
@@ -46,9 +52,14 @@ const PasswordSequence = ({ setPasswordSequenceStatus }) => {
           <ReCAPTCHA
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY}
             theme="dark"
+            onChange={handleRecaptchaChange}
           />
         </div>
-        <SubmitButton text={"Sign in"} pending={pending} />
+        <SubmitButton
+          text={"Sign in"}
+          pending={pending}
+          disabled={!recaptchaCompleted}
+        />
         <SignUpGoogle />
       </form>
     </>

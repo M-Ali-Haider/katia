@@ -1,10 +1,9 @@
 "use client";
-import AuthLogoSVG from "@/assets/Auth/logo";
 import Link from "next/link";
 import { useState } from "react";
-import PasswordSequence from "./password";
 import EmailSequence from "./email";
 import OTPSequence from "./otp";
+import PasswordSequence from "./password";
 const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [isEmailSequenceComplete, setEmailSequenceStatus] = useState(false);
@@ -13,13 +12,6 @@ const Login = () => {
 
   return (
     <div className="text-white font-inter 3xl:max-w-[500px] max-w-[360px] w-full mt-12 sm:my-20">
-      {/* <AuthLogoSVG className="w-16 h-16 3xl:w-24 3xl:h-24" />
-      <div className="text-[28px] leading-[33.6px] font-semibold mt-10 3xl:text-4xl">
-        Sign in
-      </div>
-      <div className="mt-[18px] text-[#898A96] mb-10 3xl:text-lg">
-        Welcome to Katia. Sign in to continue.
-      </div> */}
       {!isEmailSequenceComplete ? (
         <EmailSequence
           isChecked={isChecked}
