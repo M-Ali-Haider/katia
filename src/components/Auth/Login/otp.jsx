@@ -13,7 +13,7 @@ const OTPSequence = () => {
     <>
       <AuthLogoSVG className="w-16 h-16 3xl:w-24 3xl:h-24" />
       <div className="text-[24px] leading-[33.6px] font-semibold mt-10 3xl:text-3xl">
-        Two-Factor Authentication
+        One-Time Password
       </div>
       <div className="mt-[18px] text-[#898A96] mb-10 text-sm 3xl:text-base">
         A unique code has been sent to your email address. Please check your
