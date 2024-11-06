@@ -2,10 +2,10 @@
 import { checkEmail } from "@/actions/actions";
 import Checkbox from "../checkbox";
 import InputField from "../inputfield";
-import SignUpGoogle from "./google";
 import SubmitButton from "./submitButton";
 import { useFormState } from "react-dom";
 import AuthLogoSVG from "@/assets/Auth/logo";
+import SignUpGoogle from "../signUpGoogle";
 
 const EmailSequence = ({ setIsChecked, isChecked, setEmailSequenceStatus }) => {
   const [state, formAction, pending] = useFormState(

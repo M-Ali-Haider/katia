@@ -58,3 +58,45 @@ export const logout = async () => {
   session.destroy();
   redirect("/login");
 };
+
+export const signup = async ({ firstName, lastName, email, password }) => {
+  try {
+    console.log({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+    });
+    return { success: true };
+  } catch (error) {
+    console.error("Error during signup:", error);
+    return { error: "An error occurred during signup." };
+  }
+};
+// export const signup = async ({ firstName, lastName, email, password }) => {
+//   try {
+//     const response = await fetch(process.env.NEXT_PUBLIC_SIGNUP_ENDPOINT, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         first_name: firstName,
+//         last_name: lastName,
+//         email: email,
+//         password: password,
+//       }),
+//     });
+
+//     if (!response.ok) {
+//       const errorData = await response.json();
+//       return { error: errorData.message || "Signup failed" };
+//     }
+
+//     const data = await response.json();
+//     return { success: true, data };
+//   } catch (error) {
+//     console.error("Error during signup:", error);
+//     return { error: "An error occurred during signup." };
+//   }
+// };

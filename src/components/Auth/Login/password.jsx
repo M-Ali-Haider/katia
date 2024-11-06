@@ -3,10 +3,10 @@ import Link from "next/link";
 import { useFormState } from "react-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 import InputField from "../inputfield";
-import SignUpGoogle from "./google";
 import SubmitButton from "./submitButton";
 import AuthLogoSVG from "@/assets/Auth/logo";
 import { useState } from "react";
+import SignUpGoogle from "../signUpGoogle";
 
 const PasswordSequence = ({ setPasswordSequenceStatus }) => {
   const [recaptchaCompleted, setRecaptchaCompleted] = useState(false);
