@@ -1,42 +1,23 @@
 "use client";
-import Link from "next/link";
-import { useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
-import SubmitButton from "../Login/submitButton";
-import SignUpGoogle from "../signUpGoogle";
 import { signup } from "@/actions/actions";
-import InputField from "./inputField";
+import { useState } from "react";
+import { useFormState } from "react-dom";
+import ReCAPTCHA from "react-google-recaptcha";
+import InputField from "../inputfield";
+import SubmitButton from "../Login/submitButton";
+import GoogleAuthButton from "../signUpGoogle";
+import AlreadyHaveAccount from "./alreadyAccount";
+
 const Register = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [recaptchaCompleted, setRecaptchaCompleted] = useState(false);
+  const [state, formAction] = useFormState(signup, undefined);
   const handleRecaptchaChange = (value) => {
     setRecaptchaCompleted(!!value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!recaptchaCompleted) return;
-
-    try {
-      const result = await signup({ firstName, lastName, email, password });
-      if (result.success) {
-        setOTPSequence(true);
-        console.log("Signup successful:", result);
-        // Handle any additional logic if needed
-      } else {
-        console.error("Signup error:", result.error || "Unknown error");
-      }
-    } catch (error) {
-      console.error("Signup error:", error);
-    }
-  };
-
   return (
     <form
-      onSubmit={handleSubmit}
+      action={formAction}
       className="text-white font-inter 3xl:max-w-[500px] max-w-[360px] w-full mt-12 sm:my-20"
     >
       <div className="text-[28px] leading-[33.6px] font-semibold mt-10 3xl:text-4xl">
@@ -48,33 +29,29 @@ const Register = () => {
       <div className="flex flex-col gap-5 w-full">
         <InputField
           type={"text"}
-          placeholder={"First Name"}
-          label={"First Name*"}
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <InputField
-          type={"text"}
-          placeholder={"Surname"}
-          label={"Surname*"}
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          placeholder={"Enter your name"}
+          label={"Full Name*"}
+          name="fullName"
+          hasError={state?.error}
         />
         <InputField
           type={"text"}
           placeholder={"Enter your email"}
           label={"Email*"}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          hasError={state?.error}
         />
         <InputField
           type={"password"}
           placeholder={"Enter your password"}
           label={"Password*"}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          hasError={state?.error}
         />
       </div>
+      {state?.error && (
+        <p className="text-[#F04438] font-inter text-xs my-4">{state.error}</p>
+      )}
       <div className="my-6 w-full flex justify-center">
         <ReCAPTCHA
           sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY}
@@ -83,21 +60,10 @@ const Register = () => {
         />
       </div>
       <SubmitButton text={"Continue"} disabled={!recaptchaCompleted} />
-      <SignUpGoogle />
+      <GoogleAuthButton />
       <AlreadyHaveAccount />
     </form>
   );
 };
 
 export default Register;
-
-function AlreadyHaveAccount() {
-  return (
-    <div className="w-full text-center text-sm leading-[19.6px] mt-10 3xl:text-base">
-      Already have an account?&nbsp;
-      <Link href="/login" className="text-[#9773FF]">
-        Sign in
-      </Link>
-    </div>
-  );
-}

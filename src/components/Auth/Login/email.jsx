@@ -21,13 +21,6 @@ const EmailSequence = ({ setIsChecked, isChecked, setEmailSequenceStatus }) => {
 
   return (
     <>
-      <AuthLogoSVG className="w-16 h-16 3xl:w-24 3xl:h-24" />
-      <div className="text-[28px] leading-[33.6px] font-semibold mt-10 3xl:text-4xl">
-        Sign in
-      </div>
-      <div className="mt-[18px] text-[#898A96] mb-10 3xl:text-lg">
-        Welcome to Katia. Sign in to continue.
-      </div>
       <form action={formAction}>
         <InputField
           type={"text"}

@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import DropdownMenu from "./dropdownMenu";
 import { useEffect, useRef, useState } from "react";
+import DropdownMenu from "./dropdownMenu";
 
-const Pfp = () => {
+const Pfp = ({ pfp }) => {
   const [isDropDownOpen, setDropDownStatus] = useState(false);
   const dropdownRef = useRef(null);
   const triggerRef = useRef(null);
@@ -35,7 +35,7 @@ const Pfp = () => {
       <Image
         ref={triggerRef}
         onClick={() => setDropDownStatus(!isDropDownOpen)}
-        src={"/user.png"}
+        src={pfp}
         alt="pfp image"
         // width={48}
         // height={48}

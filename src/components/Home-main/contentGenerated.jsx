@@ -54,7 +54,7 @@ const ContentGenerated = () => {
           {item.role === "user" && (
             <div className="">
               <div className={`w-6 h-6 rounded-full overflow-hidden relative`}>
-                <Image src={"/user.png"} fill alt="user pfp" />
+                <Image src={"/userPlaceholder.jpg"} fill alt="user pfp" />
               </div>
             </div>
           )}

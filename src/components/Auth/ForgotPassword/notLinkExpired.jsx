@@ -1,6 +1,6 @@
 import CheckEmailSVG from "@/assets/Auth/checkEmail";
 
-const LinkNotExpired = () => {
+const LinkNotExpired = ({ email }) => {
   return (
     <>
       <CheckEmailSVG className="w-16 h-16 lg:w-24 lg:h-24 3xl:w-24 3xl:h-24" />
@@ -8,7 +8,7 @@ const LinkNotExpired = () => {
         Check your email
       </div>
       <div className="mt-[18px] text-[#898A96] mb-10 text-sm 3xl:text-lg">
-        We sent a verification link to johndow22@gmail.com
+        We sent a verification link to {email}
       </div>
     </>
   );

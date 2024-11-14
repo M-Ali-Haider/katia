@@ -1,9 +1,13 @@
-// "use client";
-// import { useState } from "react";
-const InputField = ({ type, placeholder, label, name, hasError }) => {
-  // const [isFocused, setFocused] = useState(false);
+const InputField = ({
+  type,
+  placeholder,
+  label,
+  name,
+  hasError,
+  className,
+}) => {
   return (
-    <div className="w-full flex flex-col">
+    <div className={`w-full flex flex-col ${className}`}>
       <label
         htmlFor=""
         className="mb-2 font-medium text-xs 2xl:text-base font-inter text-white"
@@ -11,8 +15,6 @@ const InputField = ({ type, placeholder, label, name, hasError }) => {
         {label}
       </label>
       <input
-        // onFocus={() => setFocused(true)}
-        // onBlur={() => setFocused(false)}
         autoComplete="off"
         type={type}
         placeholder={placeholder}

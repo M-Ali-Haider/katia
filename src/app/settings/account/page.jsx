@@ -1,23 +1,27 @@
+import { getSession } from "@/actions/actions";
 import Heading from "@/components/Settings/heading";
+import UploadProfilePicture from "@/components/UploadProfilePicture";
 import Image from "next/image";
 
-const AccountPage = () => {
+const AccountPage = async () => {
+  const session = await getSession();
   return (
     <div>
       <Heading text={"Account Details"} className={"mb-4"} />
       <div className="p-8 border rounded-xl">
         <h3 className="text-2xl font-medium mb-8">Account</h3>
         <div className="flex flex-col gap-6">
-          <div className="w-[120px] h-[120px] rounded-full relative overflow-hidden">
-            <Image
-              src={"/user.png"}
-              fill
-              alt="change pfp image"
-              className="z-[1]"
-            />
-          </div>
-          <AccountInfo label={"Name"} value={"Marvin Frankie"} />
-          <AccountInfo label={"Email"} value={"m*****00@gmail.com"} />
+          <UploadProfilePicture
+            pfp={session.profile_picture || "/userPlaceholder.jpg"}
+          />
+          <AccountInfo
+            label={"Name"}
+            value={session.user_name || "Name not available"}
+          />
+          <AccountInfo
+            label={"Email"}
+            value={session.user_email || "Email not available"}
+          />
         </div>
       </div>
     </div>

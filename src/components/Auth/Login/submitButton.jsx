@@ -1,13 +1,14 @@
+"use client";
 import ContinueArrowSVG from "@/assets/Auth/continue";
 import LoadingRing from "@/components/LoadingRing";
-
+import { useFormStatus } from "react-dom";
 export default function SubmitButton({
   text,
   className,
-  pending,
   onClick,
   disabled = false,
 }) {
+  const { pending } = useFormStatus();
   return (
     <button
       disabled={disabled}

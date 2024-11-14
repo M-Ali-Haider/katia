@@ -1,9 +1,19 @@
-import HomeMain from "./main";
+import { getSession } from "@/actions/actions";
+import Chat from "./chat";
+import Pfp from "./pfp";
 
-const Home = () => {
+const Home = async () => {
+  const session = await getSession();
+
   return (
     <main className="flex text-white max-h-screen overflow-hidden relative">
-      <HomeMain />
+      <div
+        className="flex-1 bg-[#191B31] px-5 flex justify-center 
+        relative duration-500 ease-custom-ease transition-all h-svh sm:h-screen"
+      >
+        <Pfp pfp={session.profile_picture || "/userPlaceholder.jpg"} />
+        <Chat />
+      </div>
     </main>
   );
 };
