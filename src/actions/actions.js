@@ -117,8 +117,6 @@ export const checkOTP = async (prevData, formData) => {
       session.profile_picture = data.profile_picture;
       session.isLoggedIn = true;
 
-      console.log("VERIFY OTP SESSION", session);
-
       await session.save();
       throw redirect("/home");
     }

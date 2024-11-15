@@ -99,3 +99,25 @@ export const uploadProfilePicture = async (prevState, formData) => {
     };
   }
 };
+
+export const createConversation = async () => {
+  try {
+    const res = await fetch(`${backendUrl}/api/create-conversation`, {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": session.csrfToken,
+        Cookie: `csrftoken=${session.csrfToken}; sessionid=${session.sessionId}`,
+      },
+      credentials: "include",
+      body: { user_id: session.sessionId },
+    });
+    const data = await res.json();
+    if (res.ok) {
+      return data;
+    }
+    return { error: data.message || "Error in creating conversation" };
+  } catch (error) {
+    console.error("Error Creating Conversation", error);
+    return { error: error };
+  }
+};

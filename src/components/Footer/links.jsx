@@ -9,6 +9,14 @@ const FooterLinks = () => {
           {item.title}
         </Link>
       ))}
+      <a
+        href="/katiaWhitepaper.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-[#FCFCFC]"
+      >
+        Whitepaper
+      </a>
     </div>
   );
 };

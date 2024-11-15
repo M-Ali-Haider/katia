@@ -12,7 +12,7 @@ const Home = async () => {
         relative duration-500 ease-custom-ease transition-all h-svh sm:h-screen"
       >
         <Pfp pfp={session.profile_picture || "/userPlaceholder.jpg"} />
-        <Chat />
+        <Chat session={session} />
       </div>
     </main>
   );
