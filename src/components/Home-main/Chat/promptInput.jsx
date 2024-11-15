@@ -1,28 +1,20 @@
 "use client";
-import { useState } from "react";
-const PromptInput = ({ setIsSubmit }) => {
-  const [inputValue, setInputValue] = useState("");
+const PromptInput = ({
+  inputValue,
+  setInputValue,
+  handleSubmitButton,
+  isLoading,
+}) => {
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
-  const handleSubmitButton = () => {
-    if (inputValue !== "") {
-      setIsSubmit(true);
-    }
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue !== "") {
-      setInputValue("");
-      setIsSubmit(true);
-    }
-  };
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmitButton}
       className="flex gap-[10px] items-center  border-[#898A96] border rounded-xl px-4 sm:pl-6 sm:pr-3 bg-[#0E0F21]"
     >
       <input
+        disabled={isLoading}
         type="text"
         className="bg-transparent flex-1 py-[13.5px] text-sm leading-[22px] sm:text-base focus:outline-none"
         placeholder="Ask..."
@@ -30,6 +22,7 @@ const PromptInput = ({ setIsSubmit }) => {
         onChange={handleInputChange}
       />
       <button
+        disabled={inputValue === ""}
         onClick={handleSubmitButton}
         className={`${
           inputValue === ""

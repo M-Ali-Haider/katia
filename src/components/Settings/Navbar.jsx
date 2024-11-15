@@ -1,5 +1,6 @@
 import { settings } from "@/utils/setings";
 import NavOption from "./navOption";
+import DeleteConversation from "./DeleteConversation";
 
 const Navbar = () => {
   return (
@@ -24,9 +25,7 @@ const Navbar = () => {
           </div>
         ))}
       </div>
-      <div className="text-[#EC6853] hover:text-[#fa6e59] duration-300 transition mt-4 cursor-pointer">
-        Clear Chat History
-      </div>
+      <DeleteConversation />
     </div>
   );
 };

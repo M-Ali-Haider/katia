@@ -1,18 +1,16 @@
-import { getSession } from "@/actions/actions";
-import Chat from "./chat";
-import Pfp from "./pfp";
+import Chat from "./Chat";
+import GetConversation from "./Chat/GetConversation";
+import PfpWrapper from "./pfp";
 
-const Home = async () => {
-  const session = await getSession();
-
+const Home = () => {
   return (
     <main className="flex text-white max-h-screen overflow-hidden relative">
       <div
         className="flex-1 bg-[#191B31] px-5 flex justify-center 
         relative duration-500 ease-custom-ease transition-all h-svh sm:h-screen"
       >
-        <Pfp pfp={session.profile_picture || "/userPlaceholder.jpg"} />
-        <Chat session={session} />
+        <PfpWrapper />
+        <GetConversation />
       </div>
     </main>
   );

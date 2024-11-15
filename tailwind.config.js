@@ -10,6 +10,14 @@ module.exports = {
     transitionTimingFunction: {
       "custom-ease": "cubic-bezier(0.76,0,0.24,1)",
     },
+    keyframes: {
+      shimmerY: {
+        "100%": { transform: "translateY(100%)" },
+      },
+      shimmerX: {
+        "100%": { transform: "translateX(100%)" },
+      },
+    },
     extend: {
       colors: {
         background: "var(--background)",

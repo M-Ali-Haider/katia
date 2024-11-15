@@ -1,9 +1,10 @@
 import CopySVG from "@/assets/Content/copy";
 import ChatLogoSVG from "@/assets/Content/logo";
-import { chat } from "@/utils/chat";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import Markdown from "react-markdown";
 
-const ContentGenerated = () => {
+const ContentGenerated = ({ container, conversationMessages, isLoading }) => {
   const handleCopy = (content) => {
     navigator.clipboard
       .writeText(content)
@@ -16,15 +17,18 @@ const ContentGenerated = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col gap-6 overflow-y-scroll text-sm sm:text-base pb-8 pt-4 sm:pt-9">
-      {chat.map((item, index) => (
+    <div
+      ref={container}
+      className="w-full h-full flex flex-col gap-6 overflow-y-scroll text-sm sm:text-base pb-8 pt-4 sm:pt-9"
+    >
+      {conversationMessages.map((item, index) => (
         <div
           key={index}
           className={`w-full flex gap-[10px] ${
-            item.role === "user" && "justify-end"
+            item.role === "User" && "justify-end"
           }`}
         >
-          {item.role === "assistant" && (
+          {item.role === "Assistant" && (
             <div>
               <ChatLogoSVG />
             </div>
@@ -32,16 +36,18 @@ const ContentGenerated = () => {
 
           <div
             className={`${
-              item.role === "user"
+              item.role === "User"
                 ? "rounded-tl-lg rounded-bl-lg border-r-2 border-[#F5F3C2] max-w-[210px]"
                 : "rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full"
             }  py-4 px-3 bg-[#0E0F21] sm:max-w-[500px]`}
           >
-            {item.content}
+            <Markdown className="prose max-w-full overflow-x-auto">
+              {item.content}
+            </Markdown>
           </div>
 
           {/* Copy UI */}
-          {item.role === "assistant" && (
+          {item.role === "Assistant" && (
             <div
               onClick={() => handleCopy(item.content)}
               className="w-7 h-7 flex items-center justify-center hover:bg-[#0E0F21] 
@@ -51,7 +57,7 @@ const ContentGenerated = () => {
             </div>
           )}
 
-          {item.role === "user" && (
+          {item.role === "User" && (
             <div className="">
               <div className={`w-6 h-6 rounded-full overflow-hidden relative`}>
                 <Image src={"/userPlaceholder.jpg"} fill alt="user pfp" />
@@ -60,6 +66,34 @@ const ContentGenerated = () => {
           )}
         </div>
       ))}
+
+      {isLoading && (
+        <div className={`w-full flex gap-[10px]`}>
+          <div>
+            <ChatLogoSVG />
+          </div>
+
+          <div
+            className={`flex flex-col px-4 gap-4 rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full py-4 bg-[#0E0F21] sm:max-w-[500px] w-full`}
+          >
+            <div
+              className="w-full h-6 relative before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent
+                        before:via-white/5
+                        before:animate-[shimmerX_1.5s_infinite] overflow-hidden"
+            />
+            <div
+              className="w-full h-6 relative before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent
+                        before:via-white/5
+                        before:animate-[shimmerX_1.5s_infinite] overflow-hidden"
+            />
+            <div
+              className="w-full h-6 relative before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent
+                        before:via-white/5
+                        before:animate-[shimmerX_1.5s_infinite] overflow-hidden"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

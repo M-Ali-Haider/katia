@@ -2,7 +2,8 @@ import { uploadProfilePicture } from "@/actions/authenticatedActions";
 import CrossSVG from "@/assets/closeSvg";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
+import LoadingRing from "../LoadingRing";
 
 const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
   const modalRef = useRef(null);
@@ -11,6 +12,7 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
   const [state, formAction] = useFormState(uploadProfilePicture, undefined);
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(pfp);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleCancel = (e) => {
     e.preventDefault();
@@ -23,21 +25,6 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
     e.preventDefault();
     fileInputRef.current?.click();
   };
-
-  //   const handleAttachClick = async (e) => {
-  //     e.preventDefault();
-  //     if (selectedFile) {
-  //       const formData = new FormData();
-
-  //       formData.append("profile_picture", selectedFile);
-  //       const result = await formAction(formAction);
-
-  //       if (result?.success) {
-  //         setPreviewUrl(result.profile_picture);
-  //         setIsModalOpen(false);
-  //       }
-  //     }
-  //   };
 
   const handleFileChange = async (e) => {
     const file = e.target.files?.[0];
@@ -89,6 +76,8 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
         <form ref={formRef} action={formAction}>
           <div className="py-10 flex items-center justify-center">
             <div
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
               onClick={handleUploadClick}
               className="relative w-44 h-44 md:w-[250px] md:h-[250px] rounded-full overflow-hidden cursor-pointer"
             >
@@ -98,6 +87,13 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
                 alt="pfp"
                 className="object-cover"
               />
+              <div
+                className={`${
+                  isHovered ? "bg-[rgba(0,0,0,0.7)] opacity-100" : "opacity-0"
+                } absolute inset-0 flex items-center justify-center font-semibold transition-all duration-300 ease-custom-ease z-10`}
+              >
+                Edit Photo
+              </div>
             </div>
           </div>
 
@@ -144,13 +140,15 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
 
 export default ModalPfp;
 
-function ButtonWrapper({
+export function ButtonWrapper({
   text,
   className,
   onClick,
   disabled,
   type = "button",
 }) {
+  const { pending } = useFormStatus();
+
   return (
     <button
       type={type}
@@ -158,7 +156,11 @@ function ButtonWrapper({
       disabled={disabled}
       className={`active:scale-95 transition duration-100 sm:w-auto text-center py-3 px-5 sm:px-8 rounded-2xl cursor-pointer ${className}`}
     >
-      {text}
+      {pending ? (
+        <LoadingRing width={"19.6px"} height={"19.6px"} colors={["#000000"]} />
+      ) : (
+        text
+      )}
     </button>
   );
 }

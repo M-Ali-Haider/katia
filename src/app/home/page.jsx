@@ -1,4 +1,4 @@
-import { getSession, logout } from "@/actions/actions";
+import { getSession } from "@/actions/actions";
 import Home from "@/components/Home-main";
 import { redirect } from "next/navigation";
 const Homepage = async () => {

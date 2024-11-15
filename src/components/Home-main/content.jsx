@@ -1,10 +1,14 @@
 import ContentFeatures from "./contentFeatures";
 import ContentGenerated from "./contentGenerated";
 
-const Content = ({ isSubmit }) => {
+const Content = ({ conversationData }) => {
   return (
     <div className="h-[calc(100%-110px)] sm:h-[calc(100%-83px)] flex items-end justify-center">
-      {isSubmit ? <ContentGenerated /> : <ContentFeatures />}
+      {conversationData && conversationData.message.length > 0 ? (
+        <ContentGenerated conversationMessages={conversationData.message} />
+      ) : (
+        <ContentFeatures />
+      )}
     </div>
   );
 };

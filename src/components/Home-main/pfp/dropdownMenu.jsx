@@ -1,6 +1,6 @@
 import { dropdownMenuOptions } from "@/utils/dropdownMenu";
 import Link from "next/link";
-import { Logout } from "../Logout";
+import { Logout } from "../../Logout";
 
 const DropdownMenu = ({ containerRef, isDropDownOpen }) => {
   return (
@@ -20,7 +20,7 @@ const DropdownMenu = ({ containerRef, isDropDownOpen }) => {
           key={index}
           className={`${
             item.title === "Clear Chat History" && "text-[#EC6853]"
-          } block w-full pl-6 py-[15px] text-sm leading-[18.4px] hover:bg-[#282a5c] cursor-pointer`}
+          } block w-full pl-6 py-[15px] text-sm leading-[18.4px] hover:bg-[#282a5c] active:bg-[#21224a] cursor-pointer`}
         >
           {item.title}
         </Link>
