@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import ContentFeatures from "../contentFeatures";
-import ContentGenerated from "../contentGenerated";
+import ContentFeatures from "./contentFeatures";
+import ContentGenerated from "./contentGenerated";
 import PromptInput from "./promptInput";
 import { useMutation } from "@tanstack/react-query";
 import { createMessage } from "@/actions/authenticatedActions";
