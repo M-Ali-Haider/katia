@@ -10,15 +10,22 @@ module.exports = {
     transitionTimingFunction: {
       "custom-ease": "cubic-bezier(0.76,0,0.24,1)",
     },
-    keyframes: {
-      shimmerY: {
-        "100%": { transform: "translateY(100%)" },
-      },
-      shimmerX: {
-        "100%": { transform: "translateX(100%)" },
-      },
-    },
     extend: {
+      animation: {
+        blink: "blink 1s step-end infinite",
+      },
+      keyframes: {
+        blink: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0 },
+        },
+        shimmerY: {
+          "100%": { transform: "translateY(100%)" },
+        },
+        shimmerX: {
+          "100%": { transform: "translateX(100%)" },
+        },
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

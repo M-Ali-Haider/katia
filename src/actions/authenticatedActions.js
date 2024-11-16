@@ -144,10 +144,7 @@ export const displayConversation = async () => {
     if (!res.ok) {
       throw new Error(`Failed to display conversation: ${res.status}`);
     }
-    // return await res.json();
-    const data = await res.json();
-    console.log(data);
-    return data;
+    return await res.json();
   } catch (error) {
     console.error("Error displaying conversation: ", error);
     throw error;

@@ -2,6 +2,7 @@
 import { closeSidebar } from "@/store/sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import SettingsSidebar from "./settings";
+import { openDeleteConvoModal } from "@/store/modal/deleteConversation";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,10 @@ const Sidebar = () => {
     >
       <div className="w-[315px] px-5 bg-[#0E0F21] border-r border-[#353741] h-svh max-h-svh flex flex-col">
         <SettingsSidebar />
-        <div className="text-[#EC6853] hover:text-[#fa6e59] duration-300 transition mt-4 cursor-pointer">
+        <div
+          onClick={() => dispatch(openDeleteConvoModal())}
+          className="text-[#EC6853] hover:text-[#fa6e59] duration-300 transition mt-4 cursor-pointer"
+        >
           Clear Chat History
         </div>
       </div>

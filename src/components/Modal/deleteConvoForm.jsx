@@ -1,17 +1,16 @@
-import React from "react";
+"use client";
 import ModalWrapper from ".";
 import { ButtonWrapper } from "../UploadProfilePicture/modal";
 import { deleteConversation } from "@/actions/authenticatedActions";
 import { useFormState } from "react-dom";
+import { useDispatch } from "react-redux";
+import { closeDeleteConvoModal } from "@/store/modal/deleteConversation";
 
-const DeleteConvoForm = ({ setIsModalOpen, isModalOpen, title }) => {
+const DeleteConvoForm = ({ title }) => {
+  const dispatch = useDispatch();
   const [state, formAction] = useFormState(deleteConversation, undefined);
   return (
-    <ModalWrapper
-      setIsModalOpen={setIsModalOpen}
-      title={title}
-      isModalOpen={isModalOpen}
-    >
+    <ModalWrapper title={title}>
       <div className="flex items-center justify-center md:justify-end">
         {state?.error && (
           <p className="text-[#F04438] font-inter text-xs my-4">
@@ -25,7 +24,7 @@ const DeleteConvoForm = ({ setIsModalOpen, isModalOpen, title }) => {
         )}
         <div className="flex items-center mt-6 md:mt-10">
           <ButtonWrapper
-            onClick={() => setIsModalOpen(false)}
+            onClick={() => dispatch(closeDeleteConvoModal())}
             text={"Cancel"}
             className={"text-[#F5F3C2]"}
           />

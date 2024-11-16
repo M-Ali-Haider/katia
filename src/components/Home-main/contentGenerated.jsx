@@ -3,6 +3,8 @@ import ChatLogoSVG from "@/assets/Content/logo";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import TypingMarkdown from "./Chat/markdown";
 
 const ContentGenerated = ({ container, conversationMessages, isLoading }) => {
   const handleCopy = (content) => {
@@ -41,9 +43,13 @@ const ContentGenerated = ({ container, conversationMessages, isLoading }) => {
                 : "rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full"
             }  py-4 px-3 bg-[#0E0F21] sm:max-w-[500px]`}
           >
-            <Markdown className="prose max-w-full overflow-x-auto">
+            <Markdown
+              remarkPlugins={[remarkGfm]}
+              className="prose max-w-full overflow-x-auto"
+            >
               {item.content}
             </Markdown>
+            {/* <TypingMarkdown speed={30} text={item.content} /> */}
           </div>
 
           {/* Copy UI */}

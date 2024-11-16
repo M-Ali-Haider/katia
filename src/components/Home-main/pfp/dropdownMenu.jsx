@@ -1,8 +1,14 @@
-import { dropdownMenuOptions } from "@/utils/dropdownMenu";
+import { openDeleteConvoModal } from "@/store/modal/deleteConversation";
+import {
+  dropdownMenuOptions1,
+  dropdownMenuOptions2,
+} from "@/utils/dropdownMenu";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
 import { Logout } from "../../Logout";
 
 const DropdownMenu = ({ containerRef, isDropDownOpen }) => {
+  const dispatch = useDispatch();
   return (
     <div
       ref={containerRef}
@@ -14,12 +20,27 @@ const DropdownMenu = ({ containerRef, isDropDownOpen }) => {
         w-[250px] bg-[#0e0f21] overflow-hidden
         ease-custom-ease transition-all duration-300 font-inter z-50`}
     >
-      {dropdownMenuOptions.map((item, index) => (
+      {dropdownMenuOptions1.map((item, index) => (
+        <Link
+          href={item.href}
+          key={index}
+          className={`block w-full pl-6 py-[15px] text-sm leading-[18.4px] hover:bg-[#282a5c] active:bg-[#21224a] cursor-pointer`}
+        >
+          {item.title}
+        </Link>
+      ))}
+      <div
+        onClick={() => dispatch(openDeleteConvoModal())}
+        className={`block w-full pl-6 py-[15px] text-sm leading-[18.4px] text-[#EC6853] hover:bg-[#282a5c] active:bg-[#21224a] cursor-pointer`}
+      >
+        Clear Chat History
+      </div>
+      {dropdownMenuOptions2.map((item, index) => (
         <Link
           href={item.href}
           key={index}
           className={`${
-            item.title === "Clear Chat History" && "text-[#EC6853]"
+            item.title === "Clear Chat History" && ""
           } block w-full pl-6 py-[15px] text-sm leading-[18.4px] hover:bg-[#282a5c] active:bg-[#21224a] cursor-pointer`}
         >
           {item.title}
