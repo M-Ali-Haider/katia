@@ -5,7 +5,12 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import MarkdownRenderer from "./MarkdownRenderer";
 
-const ContentGenerated = ({ container, conversationMessages, isLoading }) => {
+const ContentGenerated = ({
+  container,
+  conversationMessages,
+  isLoading,
+  error,
+}) => {
   const handleCopy = (content) => {
     navigator.clipboard
       .writeText(content)
@@ -38,10 +43,9 @@ const ContentGenerated = ({ container, conversationMessages, isLoading }) => {
           <div
             className={`${
               item.role === "User"
-                ? "rounded-tl-lg rounded-bl-lg border-r-2 border-[#F5F3C2] max-w-[210px]"
-                : "rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full"
-            }   bg-[#0E0F21] sm:max-w-[500px]`}
-            // py-4 px-3
+                ? "rounded-tl-lg rounded-bl-lg border-r-2 border-[#F5F3C2] max-w-[calc(100vw-96px)] sm:max-w-[500px]"
+                : "rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-[calc(100vw-96px)] sm:max-w-[500px]"
+            }   bg-[#0E0F21] p-6`}
           >
             <MarkdownRenderer markdownContent={item.content} />
             {/* <Markdown
@@ -100,6 +104,7 @@ const ContentGenerated = ({ container, conversationMessages, isLoading }) => {
           </div>
         </div>
       )}
+      {error && <div>Error in creating message API {error}</div>}
     </div>
   );
 };

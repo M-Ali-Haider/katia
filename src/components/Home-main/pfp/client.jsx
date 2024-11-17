@@ -25,7 +25,7 @@ const Pfp = ({ pfp }) => {
   }, [dropdownRef]);
 
   return (
-    <div className="absolute top-4 right-4 w-9 h-9 sm:w-12 sm:h-12">
+    <div className="absolute top-4 right-4 w-9 h-9 sm:w-12 sm:h-12 z-[1]">
       <div className="w-full h-full relative">
         <DropdownMenu
           containerRef={dropdownRef}

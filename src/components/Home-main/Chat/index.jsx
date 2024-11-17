@@ -11,7 +11,11 @@ const Chat = ({ preMessages }) => {
   const [inputValue, setInputValue] = useState("");
   const container = useRef(null);
 
-  const { mutate: createMessageMutation, isPending } = useMutation({
+  const {
+    mutate: createMessageMutation,
+    isPending,
+    error,
+  } = useMutation({
     mutationFn: createMessage,
     onSuccess: (data) => {
       const assistantMessage = {
@@ -53,6 +57,7 @@ const Chat = ({ preMessages }) => {
             conversationMessages={messages}
             container={container}
             isLoading={isPending}
+            error={error}
           />
         ) : (
           <ContentFeatures />

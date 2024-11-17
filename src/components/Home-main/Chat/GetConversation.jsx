@@ -36,6 +36,16 @@ const GetConversation = () => {
         />
       </div>
     );
+  if (error || messagesError) {
+    return (
+      <div>
+        {error && <div>Error fetching conversation {error}</div>}
+        {messagesError && (
+          <div>Error displaying conversation {messagesError}</div>
+        )}
+      </div>
+    );
+  }
   return <Chat preMessages={preMessages} />;
 };
 
