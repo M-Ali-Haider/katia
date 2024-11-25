@@ -128,7 +128,8 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
                 className={`${
                   !selectedFile && "opacity-50 cursor-not-allowed"
                 } bg-[#F5F3C2] text-black`}
-                disabled={!selectedFile}
+                // disabled={!selectedFile}
+                disabled={true}
               />
             </div>
           </div>

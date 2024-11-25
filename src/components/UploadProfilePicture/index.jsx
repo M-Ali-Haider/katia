@@ -1,14 +1,11 @@
 "use client";
-import { uploadProfilePicture } from "@/actions/authenticatedActions";
 import Image from "next/image";
 import { useState } from "react";
-import { useFormState } from "react-dom";
 import ModalPfp from "./modal";
 
 const UploadProfilePicture = ({ pfp }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [state, formAction] = useFormState(uploadProfilePicture, undefined);
 
   return (
     <>
