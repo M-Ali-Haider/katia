@@ -118,6 +118,7 @@ export const createConversation = async () => {
     }
     const data = await res.json();
     session.convId = data.conv_id;
+    console.log(session);
     await session.save();
     return data;
   } catch (error) {

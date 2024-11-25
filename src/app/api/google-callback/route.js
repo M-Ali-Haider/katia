@@ -1,5 +1,6 @@
 import { getSession } from "@/actions/actions";
 import { NextResponse } from "next/server";
+import cookie from "cookie";
 
 export async function GET(req) {
   const searchParams = req.nextUrl.searchParams;
@@ -24,6 +25,8 @@ export async function GET(req) {
 
     const tokenData = await tokenResponse.json();
 
+    console.log("Token Data", tokenData);
+
     const userResponse = await fetch(
       "https://www.googleapis.com/oauth2/v1/userinfo",
       {
@@ -40,14 +43,30 @@ export async function GET(req) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": session.csrfToken,
         },
         body: JSON.stringify({ token: tokenData.access_token }),
       }
     );
 
     const backendData = await backendResponse.json();
+
     if (backendData.success) {
+      const cookies = backendResponse.headers.get("set-cookie");
+      if (cookies) {
+        //Parse all cookies, not just one
+        const cookiesArray = cookies.split(",").map(cookie.parse);
+        //Store both cookies in the session
+        cookiesArray.forEach((cookieObj) => {
+          if (cookieObj.csrftoken) {
+            session.csrfToken = cookieObj.csrftoken;
+          }
+          if (cookieObj.sessionid) {
+            session.sessionId = cookieObj.sessionid;
+          }
+        });
+      }
+
+      session.userId = userData.id;
       session.user_email = userData.email;
       session.user_name = userData.name;
       session.profile_picture = userData.picture;

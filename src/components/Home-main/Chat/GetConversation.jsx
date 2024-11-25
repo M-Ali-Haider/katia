@@ -39,9 +39,9 @@ const GetConversation = () => {
   if (error || messagesError) {
     return (
       <div>
-        {error && <div>Error fetching conversation {error}</div>}
+        {error && <div>Error fetching conversation {error.message}</div>}
         {messagesError && (
-          <div>Error displaying conversation {messagesError}</div>
+          <div>Error displaying conversation {messagesError.message}</div>
         )}
       </div>
     );
