@@ -2,6 +2,8 @@ import CopySVG from "@/assets/Content/copy";
 import ChatLogoSVG from "@/assets/Content/logo";
 import Image from "next/image";
 import MarkdownRenderer from "./MarkdownRenderer";
+import { useEffect, useState } from "react";
+import { getSession } from "@/actions/actions";
 
 const ContentGenerated = ({
   container,
@@ -9,6 +11,15 @@ const ContentGenerated = ({
   isLoading,
   error,
 }) => {
+  const [session, setSession] = useState(null);
+  useEffect(() => {
+    const fetchSession = async () => {
+      const fetchedSession = await getSession();
+      setSession(fetchedSession);
+    };
+    fetchSession();
+  }, []);
+
   const handleCopy = (content) => {
     navigator.clipboard
       .writeText(content)
@@ -62,7 +73,11 @@ const ContentGenerated = ({
           {item.role === "user" && (
             <div className="">
               <div className={`w-6 h-6 rounded-full overflow-hidden relative`}>
-                <Image src={"/userPlaceholder.jpg"} fill alt="user pfp" />
+                <Image
+                  src={session?.profile_picture || "/userPlaceholder.jpg"}
+                  fill
+                  alt="user pfp"
+                />
               </div>
             </div>
           )}

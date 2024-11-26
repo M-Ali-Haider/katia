@@ -39,10 +39,6 @@ const Chat = ({ data }) => {
     }
   }, [messages, isPending]);
 
-  useEffect(() => {
-    console.log(messages);
-  }, [messages]);
-
   const handleSubmitButton = (e) => {
     e.preventDefault();
 
