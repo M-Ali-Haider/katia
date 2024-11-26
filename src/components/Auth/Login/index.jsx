@@ -9,6 +9,7 @@ import InputField from "../inputfield";
 import GoogleAuthButton from "../signUpGoogle";
 import DontHaveAccount from "./dontHaveAccount";
 import SubmitButton from "./submitButton";
+import PasswordField from "../passwordfield";
 
 const Login = () => {
   const [recaptchaCompleted, setRecaptchaCompleted] = useState(false);
@@ -34,8 +35,7 @@ const Login = () => {
           name="email"
           hasError={state?.error}
         />
-        <InputField
-          type={"password"}
+        <PasswordField
           placeholder={"Enter your password"}
           label={"Password*"}
           name="password"
@@ -48,7 +48,9 @@ const Login = () => {
           </p>
         )}
         <div className="text-[#F5F3C2] text-sm font-medium font-inter my-6 w-full flex items-center justify-center">
-          <Link href="/forgot-password">Forgot your password?</Link>
+          <Link href="/forgot-password" className="select-none">
+            Forgot your password?
+          </Link>
         </div>
         <div className="my-6 w-full flex justify-center">
           <ReCAPTCHA

@@ -4,6 +4,7 @@ import SubmitButton from "../Login/submitButton";
 import InputField from "../inputfield";
 import { useFormState } from "react-dom";
 import { resetPassword } from "@/actions/actions";
+import PasswordField from "../passwordfield";
 
 const ResetPassword = () => {
   const [state, formAction] = useFormState(resetPassword, undefined);
@@ -14,20 +15,18 @@ const ResetPassword = () => {
         Reset Password
       </div>
       <div className="mt-[18px] text-[#898A96] mb-10 3xl:text-lg">
-        Enter your email to receive a reset link.
+        Enter your new password.
       </div>
       <form action={formAction} className="mt-10">
-        <InputField
-          type={"password"}
+        <PasswordField
           label={"Password*"}
           name={"password"}
           placeholder={"Enter your password"}
         />
-        <InputField
-          type={"password"}
+        <PasswordField
           label={"Confirm Password*"}
           name={"confirmPassword"}
-          placeholder={"Enter your password"}
+          placeholder={"Enter your Confirm password"}
           className={"mt-5"}
         />
         {state?.error && (

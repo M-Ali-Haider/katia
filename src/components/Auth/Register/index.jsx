@@ -7,6 +7,7 @@ import InputField from "../inputfield";
 import SubmitButton from "../Login/submitButton";
 import GoogleAuthButton from "../signUpGoogle";
 import AlreadyHaveAccount from "./alreadyAccount";
+import PasswordField from "../passwordfield";
 
 const Register = () => {
   const [recaptchaCompleted, setRecaptchaCompleted] = useState(false);
@@ -41,8 +42,7 @@ const Register = () => {
           name="email"
           hasError={state?.error}
         />
-        <InputField
-          type={"password"}
+        <PasswordField
           placeholder={"Enter your password"}
           label={"Password*"}
           name="password"
