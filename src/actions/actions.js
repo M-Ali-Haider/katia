@@ -264,7 +264,7 @@ export const resendOTP = async (prevData, formData) => {
   const email = formData.get("email");
   try {
     const res = await fetch(`${backendUrl}/api/resend-otp?email=${email}`, {
-      method: "GET",
+      method: "POST",
     });
     const data = await res.json();
     if (res.ok && data.success) {
