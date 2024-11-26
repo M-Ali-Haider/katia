@@ -158,7 +158,16 @@ export function ButtonWrapper({
       className={`active:scale-95 transition duration-100 sm:w-auto text-center py-3 px-5 sm:px-8 rounded-2xl cursor-pointer ${className}`}
     >
       {pending ? (
-        <LoadingRing width={"19.6px"} height={"19.6px"} colors={["#000000"]} />
+        <div className="relative flex items-center justify-center">
+          <span className="opacity-0">{text}</span>
+          <div className="absolute">
+            <LoadingRing
+              width={"19.6px"}
+              height={"19.6px"}
+              colors={["#000000"]}
+            />
+          </div>
+        </div>
       ) : (
         text
       )}

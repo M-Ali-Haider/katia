@@ -1,18 +1,18 @@
 "use client";
+import { createMessage } from "@/actions/authenticatedActions";
+import { addMessage, setInitialMessages } from "@/store/chatMessages";
+import { useMutation } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ContentFeatures from "./contentFeatures";
 import ContentGenerated from "./contentGenerated";
 import PromptInput from "./promptInput";
-import { useMutation } from "@tanstack/react-query";
-import { createMessage } from "@/actions/authenticatedActions";
-import { transformMessageFormat } from "@/utils/transformMessageFormat";
 
 const Chat = ({ data }) => {
-  const [messages, setMessages] = useState(
-    transformMessageFormat(data.message)
-  );
-  const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
+  const messages = useSelector((state) => state.chat.messages);
   const container = useRef(null);
+  const [inputValue, setInputValue] = useState("");
 
   const {
     mutate: createMessageMutation,
@@ -25,10 +25,14 @@ const Chat = ({ data }) => {
         role: "assistant",
         content: data.response,
       };
-      setMessages((prevMessages) => [...prevMessages, assistantMessage]);
+      dispatch(addMessage(assistantMessage));
       setInputValue("");
     },
   });
+
+  useEffect(() => {
+    dispatch(setInitialMessages(data.message));
+  }, [data.message, dispatch]);
 
   useEffect(() => {
     if (container.current) {
@@ -47,8 +51,8 @@ const Chat = ({ data }) => {
       content: inputValue,
     };
 
+    dispatch(addMessage(userMessage));
     setInputValue("");
-    setMessages((preMessages) => [...preMessages, userMessage]);
     createMessageMutation(inputValue);
   };
 

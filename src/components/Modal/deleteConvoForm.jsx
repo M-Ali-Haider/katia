@@ -5,26 +5,49 @@ import { deleteConversation } from "@/actions/authenticatedActions";
 import { useFormState } from "react-dom";
 import { useDispatch } from "react-redux";
 import { closeDeleteConvoModal } from "@/store/modal/deleteConversation";
+import { useEffect, useState } from "react";
+import { clearMessages } from "@/store/chatMessages";
 
-const DeleteConvoForm = ({ title }) => {
+const DeleteConvoForm = () => {
   const dispatch = useDispatch();
   const [state, formAction] = useFormState(deleteConversation, undefined);
+  const [localState, setLocalState] = useState(null);
+
+  useEffect(() => {
+    setLocalState(null);
+  }, []);
+
+  useEffect(() => {
+    if (state?.success) {
+      dispatch(closeDeleteConvoModal());
+      dispatch(clearMessages());
+      setLocalState(null);
+    } else if (state?.error) {
+      setLocalState(state);
+    }
+  }, [state, dispatch]);
+
+  const handleClose = () => {
+    dispatch(closeDeleteConvoModal());
+    setLocalState(null);
+  };
+
   return (
-    <ModalWrapper title={title}>
+    <ModalWrapper title={"Are you sure you want to Clear Chat History?"}>
       <div className="flex items-center justify-center md:justify-end">
-        {state?.error && (
+        {localState?.error && (
           <p className="text-[#F04438] font-inter text-xs my-4">
-            {state.error}
+            {localState.error}
           </p>
         )}
-        {state?.success && (
+        {/* {localState?.success && (
           <p className="text-green-500 font-inter text-xs my-4">
-            {state.success}
+            {localState.success}
           </p>
-        )}
+        )} */}
         <div className="flex items-center mt-6 md:mt-10">
           <ButtonWrapper
-            onClick={() => dispatch(closeDeleteConvoModal())}
+            onClick={handleClose}
             text={"Cancel"}
             className={"text-[#F5F3C2]"}
           />

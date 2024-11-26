@@ -26,7 +26,7 @@ const SettingsLayout = ({ children }) => {
           </div>
         </div>
       </div>
-      <DeleteConvoForm title={"Are you sure you want to Clear Chat History?"} />
+      <DeleteConvoForm />
     </>
   );
 };

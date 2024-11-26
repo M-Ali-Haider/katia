@@ -14,7 +14,7 @@ const Home = () => {
           <GetConversation />
         </div>
       </main>
-      <DeleteConvoForm title={"Are you sure you want to Clear Chat History?"} />
+      <DeleteConvoForm />
     </>
   );
 };
