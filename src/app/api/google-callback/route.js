@@ -25,16 +25,14 @@ export async function GET(req) {
 
     const tokenData = await tokenResponse.json();
 
-    console.log("Token Data", tokenData);
+    // const userResponse = await fetch(
+    //   "https://www.googleapis.com/oauth2/v1/userinfo",
+    //   {
+    //     headers: { Authorization: `Bearer ${tokenData.access_token}` },
+    //   }
+    // );
 
-    const userResponse = await fetch(
-      "https://www.googleapis.com/oauth2/v1/userinfo",
-      {
-        headers: { Authorization: `Bearer ${tokenData.access_token}` },
-      }
-    );
-
-    const userData = await userResponse.json();
+    // const userData = await userResponse.json();
 
     const session = await getSession();
     const backendResponse = await fetch(
@@ -48,9 +46,9 @@ export async function GET(req) {
       }
     );
 
-    const backendData = await backendResponse.json();
+    const loginAPIData = await backendResponse.json();
 
-    if (backendData.success) {
+    if (loginAPIData.success) {
       const cookies = backendResponse.headers.get("set-cookie");
       if (cookies) {
         //Parse all cookies, not just one
@@ -66,18 +64,55 @@ export async function GET(req) {
         });
       }
 
-      session.userId = userData.id;
-      session.user_email = userData.email;
-      session.user_name = userData.name;
-      session.profile_picture = userData.picture;
+      session.userId = loginAPIData.user_id;
+      session.user_email = loginAPIData.user_email;
+      session.user_name = loginAPIData.user_name;
+      session.profile_picture = loginAPIData.profile_picture;
+      session.auth_type = loginAPIData.auth_type;
       session.isLoggedIn = true;
-
-      console.log(session);
 
       await session.save();
       return NextResponse.redirect(new URL("/home", req.url));
     } else {
-      return NextResponse.redirect(new URL("/login", req.url));
+      const googleSignUpResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/google-signup`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token: tokenData.access_token }),
+        }
+      );
+      const signupAPIData = await googleSignUpResponse.json();
+      if (signupAPIData.success) {
+        const cookies = googleSignUpResponse.headers.get("set-cookie");
+        if (cookies) {
+          //Parse all cookies, not just one
+          const cookiesArray = cookies.split(",").map(cookie.parse);
+          //Store both cookies in the session
+          cookiesArray.forEach((cookieObj) => {
+            if (cookieObj.csrftoken) {
+              session.csrfToken = cookieObj.csrftoken;
+            }
+            if (cookieObj.sessionid) {
+              session.sessionId = cookieObj.sessionid;
+            }
+          });
+        }
+
+        session.userId = signupAPIData.user_id;
+        session.user_email = signupAPIData.user_email;
+        session.user_name = signupAPIData.user_name;
+        session.profile_picture = signupAPIData.profile_picture;
+        session.auth_type = signupAPIData.auth_type;
+        session.isLoggedIn = true;
+
+        await session.save();
+        return NextResponse.redirect(new URL("/home", req.url));
+      } else {
+        return NextResponse.redirect(new URL("/login", req.url));
+      }
     }
   } catch (error) {
     console.error("Google Auth Error:", error);
