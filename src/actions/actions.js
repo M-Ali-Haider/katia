@@ -285,5 +285,5 @@ export const destroySession = async () => {
 
 export const displayPfp = async () => {
   const session = await getSession();
-  return session.profile_picture || "/userPlaceholder.jpg";
+  return session?.profile_picture || "/userPlaceholder.jpg";
 };

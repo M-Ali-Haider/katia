@@ -13,9 +13,13 @@ const ContentGenerated = ({
 }) => {
   const [pfp, setPfp] = useState("/userPlaceholder.jpg");
   useEffect(() => {
-    const picture = displayPfp();
-    setPfp(picture);
+    const fetchProfilePicture = async () => {
+      const profilePicture = await displayPfp();
+      setPfp(profilePicture);
+    };
+    fetchProfilePicture();
   }, []);
+
   const handleCopy = (content) => {
     navigator.clipboard
       .writeText(content)

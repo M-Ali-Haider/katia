@@ -36,15 +36,16 @@ const DropdownMenu = ({ containerRef, isDropDownOpen }) => {
         Clear Chat History
       </div>
       {dropdownMenuOptions2.map((item, index) => (
-        <Link
+        <a
           href={item.href}
           key={index}
+          target="_blank"
           className={`${
             item.title === "Clear Chat History" && ""
           } block w-full pl-6 py-[15px] text-sm leading-[18.4px] hover:bg-[#282a5c] active:bg-[#21224a] cursor-pointer`}
         >
           {item.title}
-        </Link>
+        </a>
       ))}
       <div className="p-2">
         <Logout className={"w-full text-sm leading-[18px]"} />

@@ -67,6 +67,7 @@ export async function GET(req) {
       session.userId = loginAPIData.user_id;
       session.user_email = loginAPIData.user_email;
       session.user_name = loginAPIData.user_name;
+      // session.profile_picture = userData.picture;
       session.profile_picture = loginAPIData.profile_picture;
       session.auth_type = loginAPIData.auth_type;
       session.isLoggedIn = true;
@@ -104,6 +105,7 @@ export async function GET(req) {
         session.userId = signupAPIData.user_id;
         session.user_email = signupAPIData.user_email;
         session.user_name = signupAPIData.user_name;
+        // session.profile_picture = userData.picture;
         session.profile_picture = signupAPIData.profile_picture;
         session.auth_type = signupAPIData.auth_type;
         session.isLoggedIn = true;
