@@ -59,13 +59,13 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
         isModalOpen
           ? "pointer-events-auto opacity-100"
           : "pointer-events-none opacity-0"
-      } fixed inset-0 z-[2] p-14 flex items-center justify-center bg-[rgba(0,0,0,0.3)] transition-all duration-150 ease-custom-ease`}
+      } fixed inset-0 z-[2] p-14 flex items-center justify-center bg-[rgba(0,0,0,0.7)] transition-all duration-150 ease-custom-ease`}
     >
       <div
         ref={modalRef}
         className={`${
           isModalOpen ? "mt-0" : "mt-10"
-        } p-5 md:p-8 max-w-[733px] w-full bg-[#0E0F21] rounded-2xl transition-all duration-500 ease-custom-ease`}
+        } p-5 md:p-8 max-w-[733px] w-full bg-[#191B31] rounded-2xl transition-all duration-500 ease-custom-ease`}
       >
         <div className="flex justify-between">
           <div className="text-2xl md:text-3xl">Edit photo</div>
