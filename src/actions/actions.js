@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { defaultSession, oauth_google, sessionOptions } from "./lib";
 import cookie from "cookie";
+import { toast } from "sonner";
 
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -243,8 +244,9 @@ export const resetPassword = async (prevData, formData) => {
     const data = await res.json();
 
     if (res.ok && data.success) {
-      session.destroy();
-      throw redirect(`/login`);
+      // session.destroy();
+      // throw redirect(`/login`);
+      return { success: data.message || "Reset Password Successful" };
     }
     return {
       error: data.message || "Reset Password Failed. Please try again.",
@@ -260,18 +262,28 @@ export const resetPassword = async (prevData, formData) => {
   }
 };
 
-export const resendOTP = async (prevData, formData) => {
-  const email = formData.get("email");
+export const resendOTP = async (email) => {
   try {
     const res = await fetch(`${backendUrl}/api/resend-otp?email=${email}`, {
       method: "POST",
     });
     const data = await res.json();
     if (res.ok && data.success) {
-      return { success: data.message || "OTP Resend Successful." };
+      return { success: "OTP Resend Successful." };
     }
     return { error: data.message || "OTP Resend Failed." };
   } catch (error) {
     return { error: "An unexpected error occured. Please try again later." };
   }
+};
+
+export const destroySession = async () => {
+  const session = await getSession();
+  session.destroy();
+  return;
+};
+
+export const displayPfp = async () => {
+  const session = await getSession();
+  return session.profile_picture || "/userPlaceholder.jpg";
 };

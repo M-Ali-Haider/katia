@@ -5,6 +5,7 @@ import { ReduxStoreProvider } from "@/providers/ReduxProvider";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { inter, ProximaNova, TWKEverett } from "./fonts/fonts";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import { Toaster } from "sonner";
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${TWKEverett.variable} ${inter.variable} ${ProximaNova.variable} ${plusJakartaSans.className} ${polySans.variable} antialiased bg-[#101016]`}
       >
+        <Toaster richColors position="bottom-center" />
         <ReactQueryProvider>
           <ReduxStoreProvider>{children}</ReduxStoreProvider>
         </ReactQueryProvider>
