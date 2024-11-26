@@ -5,9 +5,12 @@ import ContentGenerated from "./contentGenerated";
 import PromptInput from "./promptInput";
 import { useMutation } from "@tanstack/react-query";
 import { createMessage } from "@/actions/authenticatedActions";
+import { transformMessageFormat } from "@/utils/transformMessageFormat";
 
-const Chat = ({ preMessages }) => {
-  const [messages, setMessages] = useState(preMessages.message);
+const Chat = ({ data }) => {
+  const [messages, setMessages] = useState(
+    transformMessageFormat(data.message)
+  );
   const [inputValue, setInputValue] = useState("");
   const container = useRef(null);
 
@@ -19,8 +22,8 @@ const Chat = ({ preMessages }) => {
     mutationFn: createMessage,
     onSuccess: (data) => {
       const assistantMessage = {
-        role: "Assistant",
-        content: data.message,
+        role: "assistant",
+        content: data.response,
       };
       setMessages((prevMessages) => [...prevMessages, assistantMessage]);
       setInputValue("");
@@ -36,11 +39,15 @@ const Chat = ({ preMessages }) => {
     }
   }, [messages, isPending]);
 
+  useEffect(() => {
+    console.log(messages);
+  }, [messages]);
+
   const handleSubmitButton = (e) => {
     e.preventDefault();
 
     const userMessage = {
-      role: "User",
+      role: "user",
       content: inputValue,
     };
 

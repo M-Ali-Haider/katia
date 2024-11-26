@@ -1,31 +1,18 @@
 "use client";
 
-import {
-  createConversation,
-  displayConversation,
-} from "@/actions/authenticatedActions";
-import { useQuery } from "@tanstack/react-query";
-import Chat from ".";
+import { displayConversation } from "@/actions/authenticatedActions";
 import LoadingRing from "@/components/LoadingRing";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import Chat from ".";
 
 const GetConversation = () => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["conversation"],
-    queryFn: () => createConversation(),
-  });
-
-  const {
-    data: preMessages,
-    isLoading: loadingPreMessages,
-    error: messagesError,
-  } = useQuery({
     queryKey: ["messages"],
     queryFn: () => displayConversation(),
-    enabled: !!data?.conv_id,
   });
 
-  if (isLoading || loadingPreMessages)
+  if (isLoading)
     return (
       <div className="w-full h-full flex flex-col items-center justify-center">
         <div className="relative w-44 h-44">
@@ -36,17 +23,14 @@ const GetConversation = () => {
         />
       </div>
     );
-  if (error || messagesError) {
+  if (error) {
     return (
       <div>
         {error && <div>Error fetching conversation {error.message}</div>}
-        {messagesError && (
-          <div>Error displaying conversation {messagesError.message}</div>
-        )}
       </div>
     );
   }
-  return <Chat preMessages={preMessages} />;
+  return <Chat data={data} />;
 };
 
 export default GetConversation;

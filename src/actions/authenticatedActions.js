@@ -100,32 +100,32 @@ export const uploadProfilePicture = async (prevState, formData) => {
   }
 };
 
-export const createConversation = async () => {
-  try {
-    const session = await getSession();
-    const res = await fetch(`${backendUrl}/api/create-conversation`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRFToken": session.csrfToken,
-        Cookie: `csrftoken=${session.csrfToken}; sessionid=${session.sessionId}`,
-      },
-      credentials: "include",
-      body: JSON.stringify({ user_id: session.userId }),
-    });
-    if (!res.ok) {
-      throw new Error(`Failed to create conversation: ${res.status}`);
-    }
-    const data = await res.json();
-    session.convId = data.conv_id;
-    console.log(session);
-    await session.save();
-    return data;
-  } catch (error) {
-    console.error("Error creating conversation: ", error);
-    throw error;
-  }
-};
+// export const createConversation = async () => {
+//   try {
+//     const session = await getSession();
+//     const res = await fetch(`${backendUrl}/api/create-conversation`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "X-CSRFToken": session.csrfToken,
+//         Cookie: `csrftoken=${session.csrfToken}; sessionid=${session.sessionId}`,
+//       },
+//       credentials: "include",
+//       body: JSON.stringify({ user_id: session.userId }),
+//     });
+//     if (!res.ok) {
+//       throw new Error(`Failed to create conversation: ${res.status}`);
+//     }
+//     const data = await res.json();
+//     session.convId = data.conv_id;
+//     console.log(session);
+//     await session.save();
+//     return data;
+//   } catch (error) {
+//     console.error("Error creating conversation: ", error);
+//     throw error;
+//   }
+// };
 
 export const displayConversation = async () => {
   try {
@@ -136,8 +136,8 @@ export const displayConversation = async () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          // "X-CSRFToken": session.csrfToken,
-          // Cookie: `csrftoken=${session.csrfToken}; sessionid=${session.sessionId}`,
+          "X-CSRFToken": session.csrfToken,
+          Cookie: `csrftoken=${session.csrfToken}; sessionid=${session.sessionId}`,
         },
         credentials: "include",
       }
@@ -165,8 +165,7 @@ export const createMessage = async (prompt) => {
       credentials: "include",
       body: JSON.stringify({
         user_id: session.userId,
-        conv_id: session.convId,
-        prompt: prompt,
+        message: prompt,
       }),
     });
     if (!res.ok) {
@@ -183,7 +182,7 @@ export const deleteConversation = async () => {
   try {
     const session = await getSession();
     const res = await fetch(
-      `${backendUrl}/api/delete-conversation?conv_id=${session.convId}`,
+      `${backendUrl}/api/delete-conversation?user_id=${session.userId}`,
       {
         method: "DELETE",
         headers: {

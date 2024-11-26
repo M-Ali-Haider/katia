@@ -1,8 +1,6 @@
 import CopySVG from "@/assets/Content/copy";
 import ChatLogoSVG from "@/assets/Content/logo";
 import Image from "next/image";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import MarkdownRenderer from "./MarkdownRenderer";
 
 const ContentGenerated = ({
@@ -31,10 +29,10 @@ const ContentGenerated = ({
         <div
           key={index}
           className={`w-full flex gap-[10px] ${
-            item.role === "User" && "justify-end"
+            item.role === "user" && "justify-end"
           }`}
         >
-          {item.role === "Assistant" && (
+          {item.role === "assistant" && (
             <div>
               <ChatLogoSVG />
             </div>
@@ -42,22 +40,16 @@ const ContentGenerated = ({
 
           <div
             className={`${
-              item.role === "User"
+              item.role === "user"
                 ? "rounded-tl-lg rounded-bl-lg border-r-2 border-[#F5F3C2] max-w-[calc(100vw-96px)] sm:max-w-[500px]"
                 : "rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-[calc(100vw-96px)] sm:max-w-[500px]"
             }   bg-[#0E0F21] p-6`}
           >
             <MarkdownRenderer markdownContent={item.content} />
-            {/* <Markdown
-              remarkPlugins={[remarkGfm]}
-              className="prose max-w-full overflow-x-auto"
-            >
-              {item.content}
-            </Markdown> */}
           </div>
 
           {/* Copy UI */}
-          {item.role === "Assistant" && (
+          {item.role === "assistant" && (
             <div
               onClick={() => handleCopy(item.content)}
               className="w-7 h-7 flex items-center justify-center hover:bg-[#0E0F21] 
@@ -67,7 +59,7 @@ const ContentGenerated = ({
             </div>
           )}
 
-          {item.role === "User" && (
+          {item.role === "user" && (
             <div className="">
               <div className={`w-6 h-6 rounded-full overflow-hidden relative`}>
                 <Image src={"/userPlaceholder.jpg"} fill alt="user pfp" />

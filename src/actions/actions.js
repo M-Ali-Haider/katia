@@ -115,9 +115,9 @@ export const checkOTP = async (prevData, formData) => {
       session.user_name = data.user_name;
       session.user_email = data.user_email;
       session.profile_picture = data.profile_picture;
+      session.auth_type = data.auth_type;
       session.isLoggedIn = true;
 
-      console.log(session);
       await session.save();
       throw redirect("/home");
     }
