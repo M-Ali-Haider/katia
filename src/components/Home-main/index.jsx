@@ -1,3 +1,4 @@
+import { Toaster } from "sonner";
 import DeleteConvoForm from "../Modal/deleteConvoForm";
 import GetConversation from "./Chat/GetConversation";
 import PfpWrapper from "./pfp";
@@ -5,6 +6,7 @@ import PfpWrapper from "./pfp";
 const Home = () => {
   return (
     <>
+      <Toaster richColors position="top-left" />
       <main className="flex text-white max-h-screen overflow-hidden relative">
         <div
           className="flex-1 bg-[#191B31] px-5 flex justify-center 
