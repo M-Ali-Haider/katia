@@ -3,7 +3,7 @@ import styles from "./style.module.css";
 import Image from "next/image";
 const ContentFeatures = () => {
   return (
-    <div className="max-w-full w-full flex flex-col items-center mb-12">
+    <div className="max-w-full w-full h-full flex flex-col items-center justify-end mb-12 pb-12">
       <div className="w-20 h-20 sm:w-32 sm:h-32 relative">
         <Image src={"/katia_logo.png"} fill alt="katia logo" />
       </div>
