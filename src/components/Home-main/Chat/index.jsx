@@ -59,36 +59,38 @@ const Chat = ({ data }) => {
   };
 
   return (
-    <div className="w-full h-full">
-      <div
-        ref={container}
-        className={`${styles.showScrollbar} overflow-y-scroll px-5 h-[calc(100%-110px)] sm:h-[calc(100%-83px)] flex items-center justify-center`}
-      >
-        <div className="max-w-[768px] w-full h-full">
-          {messages.length > 0 ? (
-            <ContentGenerated
-              conversationMessages={messages}
+    <>
+      <div className="w-full h-full flex flex-col justify-end pb-8">
+        <div
+          ref={container}
+          className={`${styles.showScrollbar} overflow-y-scroll px-5 h-[calc(100%-110px)] sm:h-[calc(100%-83px)] flex items-center justify-center`}
+        >
+          <div className="max-w-[768px] w-full h-full">
+            {messages.length > 0 ? (
+              <ContentGenerated
+                conversationMessages={messages}
+                isLoading={isPending}
+                isError={isError}
+                error={error}
+              />
+            ) : (
+              <ContentFeatures />
+            )}
+          </div>
+        </div>
+        {/* Input Prompt */}
+        <div className="w-full flex items-center justify-center px-5">
+          <div className="max-w-[768px] w-full">
+            <PromptInput
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+              handleSubmitButton={handleSubmitButton}
               isLoading={isPending}
-              isError={isError}
-              error={error}
             />
-          ) : (
-            <ContentFeatures />
-          )}
+          </div>
         </div>
       </div>
-      {/* Input Prompt */}
-      <div className="w-full flex items-center justify-center">
-        <div className="max-w-[768px] w-full">
-          <PromptInput
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-            handleSubmitButton={handleSubmitButton}
-            isLoading={isPending}
-          />
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

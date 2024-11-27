@@ -33,7 +33,7 @@ const ContentGenerated = ({
 
   return (
     <div
-      className={`w-full flex flex-col gap-6 text-sm sm:text-base pb-8 pt-4 sm:pt-9`}
+      className={`w-full flex flex-col gap-6 text-sm sevenHundo:text-base pb-8 pt-4 sevenHundo:pt-9`}
     >
       {conversationMessages.map((item, index) => (
         <div
@@ -51,8 +51,8 @@ const ContentGenerated = ({
           <div
             className={`${
               item.role === "user"
-                ? "rounded-tl-lg rounded-bl-lg border-r-2 border-[#F5F3C2] max-w-[calc(100vw-96px)] sm:max-w-[500px]"
-                : "rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-[calc(100vw-96px)] sm:max-w-[550px]"
+                ? "rounded-tl-lg rounded-bl-lg border-r-2 border-[#F5F3C2] max-w-[calc(100vw-112px)] sevenHundo:max-w-[500px]"
+                : "rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-[calc(100vw-112px)] sevenHundo:max-w-[550px]"
             }   bg-[#0E0F21] p-6`}
           >
             <MarkdownRenderer markdownContent={item.content} />
@@ -86,7 +86,7 @@ const ContentGenerated = ({
           </div>
 
           <div
-            className={`flex flex-col px-4 gap-4 rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full py-4 bg-[#0E0F21] sm:max-w-[550px] w-full`}
+            className={`flex flex-col px-4 gap-4 rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full py-4 bg-[#0E0F21] sevenHundo:max-w-[550px] w-full`}
           >
             <div
               className="w-full h-6 relative before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent
@@ -113,7 +113,7 @@ const ContentGenerated = ({
             <ChatLogoSVG />
           </div>
           <div
-            className={`flex flex-col px-4 gap-4 rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full py-4 bg-[#0E0F21] sm:max-w-[550px] w-full`}
+            className={`flex flex-col px-4 gap-4 rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full py-4 bg-[#0E0F21] sevenHundo:max-w-[550px] w-full`}
           >
             Error in creating message:&nbsp;
             {error instanceof Error
