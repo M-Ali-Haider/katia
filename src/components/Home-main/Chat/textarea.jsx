@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-
+import styles from "./style.module.css";
 const CustomTextArea = ({ inputValue, handleInputChange, handleSubmit }) => {
   const textareaRef = useRef(null);
   useEffect(() => {
@@ -30,7 +30,7 @@ const CustomTextArea = ({ inputValue, handleInputChange, handleSubmit }) => {
     <textarea
       ref={textareaRef}
       rows={1}
-      className="flex-1 text-sm leading-[22px] p-0 pt-[3px] sm:pt-1.5 sm:text-base  focus:outline-none resize-none max-h-[250px] overflow-y-scroll bg-transparent"
+      className={`${styles.scrollbar} flex-1 text-sm leading-[22px] p-0 pt-[3px] sm:pt-1.5 sm:text-base focus:outline-none resize-none`}
       placeholder="Ask..."
       value={inputValue}
       onChange={handleInputChange}

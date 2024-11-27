@@ -53,7 +53,7 @@ const ContentGenerated = ({
             className={`${
               item.role === "user"
                 ? "rounded-tl-lg rounded-bl-lg border-r-2 border-[#F5F3C2] max-w-[calc(100vw-96px)] sm:max-w-[500px]"
-                : "rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-[calc(100vw-96px)] sm:max-w-[500px]"
+                : "rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-[calc(100vw-96px)] sm:max-w-[550px]"
             }   bg-[#0E0F21] p-6`}
           >
             <MarkdownRenderer markdownContent={item.content} />
@@ -87,7 +87,7 @@ const ContentGenerated = ({
           </div>
 
           <div
-            className={`flex flex-col px-4 gap-4 rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full py-4 bg-[#0E0F21] sm:max-w-[500px] w-full`}
+            className={`flex flex-col px-4 gap-4 rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full py-4 bg-[#0E0F21] sm:max-w-[550px] w-full`}
           >
             <div
               className="w-full h-6 relative before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent
