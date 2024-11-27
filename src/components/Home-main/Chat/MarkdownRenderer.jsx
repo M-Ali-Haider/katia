@@ -10,6 +10,18 @@ const MarkdownRenderer = ({ markdownContent }) => {
       className="prose max-w-full overflow-x-auto"
       components={{
         // Style code blocks
+        a({ node, children, href, ...props }) {
+          return (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-600 underline duration-150 transition-all"
+            >
+              {children}
+            </a>
+          );
+        },
         code({ node, inline, className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || "");
           return !inline && match ? (

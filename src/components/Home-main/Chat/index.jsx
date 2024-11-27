@@ -17,6 +17,7 @@ const Chat = ({ data }) => {
   const {
     mutate: createMessageMutation,
     isPending,
+    isError,
     error,
   } = useMutation({
     mutationFn: createMessage,
@@ -64,6 +65,7 @@ const Chat = ({ data }) => {
             conversationMessages={messages}
             container={container}
             isLoading={isPending}
+            isError={isError}
             error={error}
           />
         ) : (

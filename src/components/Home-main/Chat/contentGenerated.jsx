@@ -9,6 +9,7 @@ const ContentGenerated = ({
   container,
   conversationMessages,
   isLoading,
+  isError,
   error,
 }) => {
   const [pfp, setPfp] = useState("/userPlaceholder.jpg");
@@ -107,7 +108,30 @@ const ContentGenerated = ({
           </div>
         </div>
       )}
-      {error && <div>Error in creating message API {error}</div>}
+
+      {isError && (
+        <div className={`w-full flex gap-[10px]`}>
+          <div>
+            <ChatLogoSVG />
+          </div>
+          <div
+            className={`flex flex-col px-4 gap-4 rounded-tr-lg rounded-br-lg border-l-2 border-[#9773FF] max-w-full py-4 bg-[#0E0F21] sm:max-w-[550px] w-full`}
+          >
+            Error in creating message:&nbsp;
+            {error instanceof Error
+              ? error.message
+              : "An unknown error occurred"}
+            <div className="mt-2">
+              <button
+                onClick={() => window.location.reload()}
+                className="text-blue-500 underline hover:text-blue-600"
+              >
+                Refresh Page
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
