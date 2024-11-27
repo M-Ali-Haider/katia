@@ -1,8 +1,11 @@
 "use client";
 import { initiateGoogleAuth } from "@/actions/actions";
 import GoogleSVG from "@/assets/Auth/google";
+import { usePathname } from "next/navigation";
 
 const GoogleAuthButton = () => {
+  const pathName = usePathname();
+  const text = pathName === "/login" ? "in" : "up";
   const handleGoogleAuth = async () => {
     await initiateGoogleAuth();
   };
@@ -13,7 +16,7 @@ const GoogleAuthButton = () => {
     >
       <GoogleSVG />
       <span className="text-sm 3xl:text-base leading-[19.6px] font-medium">
-        Sign up with Google
+        Sign {text} with Google
       </span>
     </div>
   );
