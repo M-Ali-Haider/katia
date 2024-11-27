@@ -4,6 +4,7 @@ import ChatLogoSVG from "@/assets/Content/logo";
 import Image from "next/image";
 import MarkdownRenderer from "./MarkdownRenderer";
 import { useEffect, useState } from "react";
+// import styles from "./style.module.css";
 
 const ContentGenerated = ({
   container,
@@ -35,7 +36,7 @@ const ContentGenerated = ({
   return (
     <div
       ref={container}
-      className="w-full h-full flex flex-col gap-6 overflow-y-scroll text-sm sm:text-base pb-8 pt-4 sm:pt-9"
+      className={`w-full h-full flex flex-col gap-6 overflow-y-scroll text-sm sm:text-base pb-8 pt-4 sm:pt-9`}
     >
       {conversationMessages.map((item, index) => (
         <div

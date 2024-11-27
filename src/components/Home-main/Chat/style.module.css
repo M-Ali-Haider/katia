@@ -16,8 +16,25 @@
 .scrollbar::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.2) !important;
   border-radius: 4px !important;
+  cursor: pointer !important;
 }
 
 .scrollbar::-webkit-scrollbar-track {
   background-color: transparent !important;
+  cursor: pointer !important;
+}
+
+.showScrollbar::-webkit-scrollbar {
+  display: block !important;
+  width: 8px !important;
+}
+.showScrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}
+
+.showScrollbar::-webkit-scrollbar-track {
+  background-color: transparent !important;
+  cursor: pointer !important;
 }
