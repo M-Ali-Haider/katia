@@ -7,23 +7,17 @@ import { useDispatch } from "react-redux";
 import { closeDeleteConvoModal } from "@/store/modal/deleteConversation";
 import { useEffect, useState } from "react";
 import { clearMessages } from "@/store/chatMessages";
+import { toast } from "sonner";
 
 const DeleteConvoForm = () => {
   const dispatch = useDispatch();
   const [state, formAction] = useFormState(deleteConversation, undefined);
-  const [localState, setLocalState] = useState(null);
-
-  useEffect(() => {
-    setLocalState(null);
-  }, []);
 
   useEffect(() => {
     if (state?.success) {
       dispatch(closeDeleteConvoModal());
       dispatch(clearMessages());
-      setLocalState(null);
-    } else if (state?.error) {
-      setLocalState(state);
+      toast.success(state.success);
     }
   }, [state, dispatch]);
 
@@ -35,16 +29,11 @@ const DeleteConvoForm = () => {
   return (
     <ModalWrapper title={"Are you sure you want to Clear Chat History?"}>
       <div className="flex items-center justify-center md:justify-end">
-        {localState?.error && (
+        {state?.error && (
           <p className="text-[#F04438] font-inter text-xs my-4">
-            {localState.error}
+            {state.error}
           </p>
         )}
-        {/* {localState?.success && (
-          <p className="text-green-500 font-inter text-xs my-4">
-            {localState.success}
-          </p>
-        )} */}
         <div className="flex items-center mt-6 md:mt-10">
           <ButtonWrapper
             onClick={handleClose}
