@@ -1,9 +1,9 @@
 import { displayPfp } from "@/actions/actions";
-import CopySVG from "@/assets/Content/copy";
 import ChatLogoSVG from "@/assets/Content/logo";
 import Image from "next/image";
-import MarkdownRenderer from "./MarkdownRenderer";
 import { useEffect, useState } from "react";
+import CopyTick from "./copy";
+import MarkdownRenderer from "./MarkdownRenderer";
 
 const ContentGenerated = ({
   conversationMessages,
@@ -19,17 +19,6 @@ const ContentGenerated = ({
     };
     fetchProfilePicture();
   }, []);
-
-  const handleCopy = (content) => {
-    navigator.clipboard
-      .writeText(content)
-      .then(() => {
-        console.log("Copied to clipboard");
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
-  };
 
   return (
     <div
@@ -59,15 +48,7 @@ const ContentGenerated = ({
           </div>
 
           {/* Copy UI */}
-          {item.role === "assistant" && (
-            <div
-              onClick={() => handleCopy(item.content)}
-              className="w-7 h-7 flex items-center justify-center hover:bg-[#0E0F21] 
-              transition duration-100 cursor-pointer rounded-md -ml-1 active:scale-90"
-            >
-              <CopySVG className="w-[18px] h-[18px]" />
-            </div>
-          )}
+          {item.role === "assistant" && <CopyTick content={item.content} />}
 
           {item.role === "user" && (
             <div className="">
