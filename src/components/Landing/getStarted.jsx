@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const GetStarted = () => {
   return (
     <div className="flex flex-col landing:max-w-[636px] flex-1">
@@ -17,10 +19,12 @@ const GetStarted = () => {
         </p>
       </div>
       <div className="flex flex-col sm:flex-row flex-wrap text-sm sm:text-base items-center gap-2">
-        <ButtonWrapper
-          text={"Get started with AI Katia"}
-          className={"bg-[#F5F3C2] text-black"}
-        />
+        <Link
+          className={`active:scale-95 transition duration-100 w-full sm:w-auto text-center py-3 px-5 sm:px-8 rounded-2xl cursor-pointer bg-[#F5F3C2] text-black`}
+          href={"/login"}
+        >
+          Get started with AI Katia
+        </Link>
         <ButtonWrapper
           text={"Watch demo"}
           className={"border border-solid border-[#5F5F5F] text-[#EBE9DE]"}

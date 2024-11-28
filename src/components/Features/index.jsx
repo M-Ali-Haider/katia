@@ -1,3 +1,4 @@
+import Link from "next/link";
 import FeatureGrid from "./grid";
 
 const Features = () => {
@@ -9,9 +10,12 @@ const Features = () => {
             Ground-breaking Features for Unrivalled Outcomes
           </div>
           <div className="h-full flex flex-col items-end">
-            <div className="active:scale-95 transition duration-100 py-3 px-8 rounded-2xl text-[#EBE9DE] border-[#5F5F5F] border border-solid cursor-pointer">
+            <Link
+              href={"/login"}
+              className="active:scale-95 transition duration-100 py-3 px-8 rounded-2xl text-[#EBE9DE] border-[#5F5F5F] border border-solid cursor-pointer"
+            >
               Start Your Journey with AI Katia
-            </div>
+            </Link>
           </div>
         </div>
         <FeatureGrid />
