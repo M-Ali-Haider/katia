@@ -14,7 +14,9 @@ const SelectPlan = ({
   };
   return (
     <>
-      <div className="mb-[10px] mt-[30px] text-[#F5F3C2]">Select a Plan</div>
+      <div className="mb-[10px] mt-[30px] text-[#F5F3C2] text-base sm:text-lg">
+        Select a Plan
+      </div>
       <div className="w-full flex flex-wrap gap-6">
         <SubscriptionCard
           title={"basic"}
@@ -32,7 +34,7 @@ const SelectPlan = ({
           subscriptionPlan={subscriptionPlan}
         />
       </div>
-      <div className="mt-10 text-base sm:text-lg">
+      <div className="mt-10 text-base sm:text-lg text-[#F5F3C2]">
         {plans[subscriptionPlan].desc}
       </div>
       <div className="mt-[10px]">

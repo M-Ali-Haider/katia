@@ -12,7 +12,7 @@ const BillingManagement = () => {
     <div>
       <Heading text={"Billing Management"} className={"mb-4"} />
       {isPlanSelected ? (
-        <Stripe amount={amount} />
+        <Stripe setIsPlanSelected={setIsPlanSelected} amount={amount} />
       ) : (
         <Subscription
           setIsPlanSelected={setIsPlanSelected}
