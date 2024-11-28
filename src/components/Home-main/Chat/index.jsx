@@ -63,7 +63,7 @@ const Chat = ({ data }) => {
       <div className="w-full h-full flex flex-col justify-end pb-8">
         <div
           ref={container}
-          className={`${styles.showScrollbar} overflow-y-scroll px-5 h-[calc(100%-110px)] sm:h-[calc(100%-83px)] flex items-center justify-center`}
+          className={`${styles.showScrollbar} overflow-y-scroll px-5 h-[calc(100%-110px)] sevenHundo:h-[calc(100%-83px)] flex items-center justify-center`}
         >
           <div className="max-w-[768px] w-full h-full">
             {messages.length > 0 ? (

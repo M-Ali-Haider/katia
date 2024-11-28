@@ -41,6 +41,7 @@ module.exports = {
         landing: "968px",
         footer: "860px",
         header: "930px",
+        pfp: "890px",
         sevenHundo: "700px",
       },
     },

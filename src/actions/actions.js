@@ -1,10 +1,9 @@
 "use server";
+import cookie from "cookie";
 import { getIronSession } from "iron-session";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { defaultSession, oauth_google, sessionOptions } from "./lib";
-import cookie from "cookie";
-import { toast } from "sonner";
 
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
