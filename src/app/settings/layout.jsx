@@ -5,10 +5,12 @@ import styles from "./style.module.css";
 import BurgerMenu from "@/components/Settings/burgerMenu";
 import Sidebar from "@/components/Sidebar";
 import DeleteConvoForm from "@/components/Modal/deleteConvoForm";
+import { Toaster } from "sonner";
 
 const SettingsLayout = ({ children }) => {
   return (
     <>
+      <Toaster richColors position="bottom-center" />
       <div className="pt-16 text-white font-inter flex items-center justify-center relative px-5">
         <BurgerMenu />
         <Sidebar />
