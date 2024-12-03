@@ -2,10 +2,12 @@
 import Image from "next/image";
 import { useState } from "react";
 import ModalPfp from "./modal";
+import { useSelector } from "react-redux";
 
-const UploadProfilePicture = ({ pfp }) => {
+const UploadProfilePicture = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const pfp = useSelector((state) => state.pfp.profile_picture);
 
   return (
     <>

@@ -86,17 +86,11 @@ export const checkOTP = async (prevData, formData) => {
         "Content-Type": "application/json",
       },
     });
-
     const data = await res.json();
-
     if (res.ok && data.success) {
-      //Get all cookies from response
       const cookies = res.headers.get("set-cookie");
       if (cookies) {
-        //Parse all cookies, not just one
         const cookiesArray = cookies.split(",").map(cookie.parse);
-
-        //Store both cookies in the session
         cookiesArray.forEach((cookieObj) => {
           if (cookieObj.csrftoken) {
             session.csrfToken = cookieObj.csrftoken;
@@ -106,29 +100,26 @@ export const checkOTP = async (prevData, formData) => {
           }
         });
       }
-
       session.userId = data.user_id;
       if (flow === "forgot-password") {
         await session.save();
         throw redirect(`/reset-password`);
       }
-      session.user_name = data.user_name;
-      session.user_email = data.user_email;
-      session.profile_picture = data.profile_picture;
-      session.auth_type = data.auth_type;
-      session.isLoggedIn = true;
-
-      await session.save();
-      throw redirect("/home");
+      return {
+        success: true,
+        message: "OTP Verification Successful. Redirecting...",
+        user_name: data.user_name,
+        user_email: data.user_email,
+        profile_picture: data.profile_picture,
+        auth_type: data.auth_type,
+        csrfToken: session.csrfToken,
+        sessionId: session.sessionId,
+      };
     }
     return {
       error: "Incorrect OTP",
     };
   } catch (error) {
-    if (error instanceof Error && error.message.includes("NEXT_REDIRECT")) {
-      throw error;
-    }
-    console.error("OTP error", error);
     return {
       error: "An unexpected error occured. Please try again later.",
     };
@@ -285,4 +276,22 @@ export const destroySession = async () => {
 export const displayPfp = async () => {
   const session = await getSession();
   return session?.profile_picture || "/userPlaceholder.jpg";
+};
+
+export const saveCheckOTPSession = async (
+  user_name,
+  user_email,
+  auth_type,
+  csrfToken,
+  sessionId
+) => {
+  const session = await getSession();
+  session.user_name = user_name;
+  session.user_email = user_email;
+  session.auth_type = auth_type;
+  session.csrfToken = csrfToken;
+  session.sessionId = sessionId;
+  session.isLoggedIn = true;
+  await session.save();
+  redirect("/home");
 };

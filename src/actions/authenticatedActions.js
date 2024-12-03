@@ -65,11 +65,7 @@ export const uploadProfilePicture = async (prevState, formData) => {
     if (!file) {
       return { error: "No file selected" };
     }
-
     const session = await getSession();
-
-    formData.append("user_id", session.userId);
-
     const res = await fetch(`${backendUrl}/api/upload-picture`, {
       method: "POST",
       headers: {
@@ -82,8 +78,12 @@ export const uploadProfilePicture = async (prevState, formData) => {
 
     const data = await res.json();
     if (res.ok) {
-      session.profile_picture = data.profile_picture;
-      await session.save();
+      // const sessionSize = Buffer.byteLength(JSON.stringify(session));
+      // console.log(`Session size: ${sessionSize} bytes`);
+      // console.log(session);
+      // localStorage.setItem("profile_picture", data.profile_picture);
+      // session.profile_picture = data.profile_picture;
+      // await session.save();
       return {
         success: data.message,
         profile_picture: data.profile_picture,
@@ -99,33 +99,6 @@ export const uploadProfilePicture = async (prevState, formData) => {
     };
   }
 };
-
-// export const createConversation = async () => {
-//   try {
-//     const session = await getSession();
-//     const res = await fetch(`${backendUrl}/api/create-conversation`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         "X-CSRFToken": session.csrfToken,
-//         Cookie: `csrftoken=${session.csrfToken}; sessionid=${session.sessionId}`,
-//       },
-//       credentials: "include",
-//       body: JSON.stringify({ user_id: session.userId }),
-//     });
-//     if (!res.ok) {
-//       throw new Error(`Failed to create conversation: ${res.status}`);
-//     }
-//     const data = await res.json();
-//     session.convId = data.conv_id;
-//     console.log(session);
-//     await session.save();
-//     return data;
-//   } catch (error) {
-//     console.error("Error creating conversation: ", error);
-//     throw error;
-//   }
-// };
 
 export const displayConversation = async () => {
   try {

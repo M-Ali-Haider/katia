@@ -2,9 +2,11 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import DropdownMenu from "./dropdownMenu";
+import { useSelector } from "react-redux";
 
-const Pfp = ({ pfp }) => {
+const Pfp = () => {
   const [isDropDownOpen, setDropDownStatus] = useState(false);
+  const pfp = useSelector((state) => state.pfp.profile_picture);
   const dropdownRef = useRef(null);
   const triggerRef = useRef(null);
 

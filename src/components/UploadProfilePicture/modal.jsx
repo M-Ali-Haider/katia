@@ -4,8 +4,12 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingRing from "../LoadingRing";
+import { useDispatch } from "react-redux";
+import { setPfp } from "@/store/pfp";
+import { toast } from "sonner";
 
 const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
+  const dispatch = useDispatch();
   const modalRef = useRef(null);
   const fileInputRef = useRef(null);
   const formRef = useRef(null);
@@ -38,10 +42,15 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
 
   useEffect(() => {
     if (state?.success) {
+      toast.success("Photo Uploaded Successfully");
+      dispatch(setPfp(state.profile_picture));
       setPreviewUrl(state.profile_picture);
       setIsModalOpen(false);
     }
-  }, [state, setIsModalOpen]);
+    if (state?.error) {
+      toast.error(state.error);
+    }
+  }, [state, setIsModalOpen, dispatch]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -106,14 +115,6 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
             className="hidden"
           />
 
-          {state?.error && (
-            <p className="text-red-500 text-center">{state.error}</p>
-          )}
-
-          {state?.success && (
-            <p className="text-green-500 text-center">{state.success}</p>
-          )}
-
           <div className="flex items-center justify-center md:justify-end">
             <div className="flex items-center">
               <ButtonWrapper
@@ -128,8 +129,8 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
                 className={`${
                   !selectedFile && "opacity-50 cursor-not-allowed"
                 } bg-[#F5F3C2] text-black`}
-                // disabled={!selectedFile}
-                disabled={true}
+                disabled={!selectedFile}
+                // disabled={true}
               />
             </div>
           </div>

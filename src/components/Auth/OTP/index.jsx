@@ -1,5 +1,5 @@
 "use client";
-import { checkOTP, resendOTP } from "@/actions/actions";
+import { checkOTP, resendOTP, saveCheckOTPSession } from "@/actions/actions";
 import AuthLogoSVG from "@/assets/Auth/logo";
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
@@ -25,6 +25,19 @@ const OTP = ({ email, flow = "login" }) => {
   }, [countdown]);
 
   useEffect(() => {
+    if (stateOTP?.success) {
+      toast.success(stateOTP.message);
+      localStorage.setItem("profile_picture", stateOTP.profile_picture);
+      const { user_name, user_email, auth_type, csrfToken, sessionId } =
+        stateOTP;
+      saveCheckOTPSession(
+        user_name,
+        user_email,
+        auth_type,
+        csrfToken,
+        sessionId
+      );
+    }
     if (stateOTP?.error) {
       toast.error(stateOTP.error);
     }
