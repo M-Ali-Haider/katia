@@ -11,7 +11,7 @@ export function Logout({ className }) {
   const [state, formAction] = useFormState(logout, undefined);
   useEffect(() => {
     if (state?.success) {
-      toast.success(state.success);
+      toast.info(state.success);
       dispatch(removeFromLocalStorage());
       logoutDestroySession();
     }

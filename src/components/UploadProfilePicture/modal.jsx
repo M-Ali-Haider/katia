@@ -117,11 +117,16 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
 
           <div className="flex items-center justify-center md:justify-end">
             <div className="flex items-center">
-              <ButtonWrapper
+              <CancelButton
+                onClick={handleCancel}
+                text={"Cancel"}
+                className="text-[#F5F3C2]"
+              />
+              {/* <ButtonWrapper
                 onClick={handleCancel}
                 text={"Cancel"}
                 className={"text-[#F5F3C2]"}
-              />
+              /> */}
               <ButtonWrapper
                 type="submit"
                 // onClick={handleAttachClick}
@@ -175,3 +180,17 @@ export function ButtonWrapper({
     </button>
   );
 }
+
+const CancelButton = ({ onClick, text, className }) => {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type={"button"}
+      onClick={onClick}
+      disabled={pending}
+      className={`active:scale-95 disabled:text-gray-400 disabled:cursor-not-allowed transition duration-100 sm:w-auto text-center py-3 px-5 sm:px-8 rounded-2xl cursor-pointer ${className}`}
+    >
+      {text}
+    </button>
+  );
+};

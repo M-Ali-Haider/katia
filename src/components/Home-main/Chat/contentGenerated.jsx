@@ -1,7 +1,6 @@
-import { displayPfp } from "@/actions/actions";
 import ChatLogoSVG from "@/assets/Content/logo";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import CopyTick from "./copy";
 import MarkdownRenderer from "./MarkdownRenderer";
 
@@ -11,15 +10,7 @@ const ContentGenerated = ({
   isError,
   error,
 }) => {
-  const [pfp, setPfp] = useState("/userPlaceholder.jpg");
-  useEffect(() => {
-    const fetchProfilePicture = async () => {
-      const profilePicture = await displayPfp();
-      setPfp(profilePicture);
-    };
-    fetchProfilePicture();
-  }, []);
-
+  const pfp = useSelector((state) => state.pfp.profile_picture);
   return (
     <div
       className={`w-full flex flex-col gap-6 text-sm sevenHundo:text-base pb-8 pt-4 sevenHundo:pt-9`}
