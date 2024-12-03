@@ -51,9 +51,7 @@ export async function GET(req) {
     if (loginAPIData.success) {
       const cookies = backendResponse.headers.get("set-cookie");
       if (cookies) {
-        //Parse all cookies, not just one
         const cookiesArray = cookies.split(",").map(cookie.parse);
-        //Store both cookies in the session
         cookiesArray.forEach((cookieObj) => {
           if (cookieObj.csrftoken) {
             session.csrfToken = cookieObj.csrftoken;
@@ -64,14 +62,22 @@ export async function GET(req) {
         });
       }
 
+      // return {
+      //   userId: loginAPIData.user_id,
+      //   user_email: loginAPIData.user_email,
+      //   user_name: loginAPIData.user_name,
+      //   profile_picture: loginAPIData.profile_picture,
+      //   auth_type: loginAPIData.auth_type,
+      //   csrfToken: session.csrfToken,
+      //   sessionId: session.sessionId,
+      // };
+
       session.userId = loginAPIData.user_id;
       session.user_email = loginAPIData.user_email;
       session.user_name = loginAPIData.user_name;
-      // session.profile_picture = userData.picture;
-      session.profile_picture = loginAPIData.profile_picture;
+      // session.profile_picture = loginAPIData.profile_picture;
       session.auth_type = loginAPIData.auth_type;
       session.isLoggedIn = true;
-
       await session.save();
       return NextResponse.redirect(new URL("/home", req.url));
     } else {
@@ -89,9 +95,7 @@ export async function GET(req) {
       if (signupAPIData.success) {
         const cookies = googleSignUpResponse.headers.get("set-cookie");
         if (cookies) {
-          //Parse all cookies, not just one
           const cookiesArray = cookies.split(",").map(cookie.parse);
-          //Store both cookies in the session
           cookiesArray.forEach((cookieObj) => {
             if (cookieObj.csrftoken) {
               session.csrfToken = cookieObj.csrftoken;
@@ -102,14 +106,22 @@ export async function GET(req) {
           });
         }
 
+        // return {
+        //   userId: signupAPIData.user_id,
+        //   user_email: signupAPIData.user_email,
+        //   user_name: signupAPIData.user_name,
+        //   profile_picture: signupAPIData.profile_picture,
+        //   auth_type: signupAPIData.auth_type,
+        //   csrfToken: session.csrfToken,
+        //   sessionId: session.sessionId,
+        // };
+
         session.userId = signupAPIData.user_id;
         session.user_email = signupAPIData.user_email;
         session.user_name = signupAPIData.user_name;
-        // session.profile_picture = userData.picture;
-        session.profile_picture = signupAPIData.profile_picture;
+        // session.profile_picture = signupAPIData.profile_picture;
         session.auth_type = signupAPIData.auth_type;
         session.isLoggedIn = true;
-
         await session.save();
         return NextResponse.redirect(new URL("/home", req.url));
       } else {

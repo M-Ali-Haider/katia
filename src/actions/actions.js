@@ -168,21 +168,24 @@ export const logout = async () => {
     });
     const data = res.json();
     if (res.ok) {
-      session.destroy();
-      throw redirect(`/login`);
+      return { success: "Logging Out..." };
+      // session.destroy();
+      // throw redirect(`/login`);
     }
     return {
       error: data.message || "Logout Failed. Please try again.",
     };
   } catch (error) {
-    if (error instanceof Error && error.message.includes("NEXT_REDIRECT")) {
-      throw error;
-    }
-    console.error("Logout Error:", error);
     return {
       error: "An unexpected error occured. Please try again later.",
     };
   }
+};
+
+export const logoutDestroySession = async () => {
+  const session = await getSession();
+  session.destroy();
+  redirect("/login");
 };
 
 export const forgotPassword = async (prevData, formData) => {

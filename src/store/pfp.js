@@ -15,8 +15,13 @@ const pfpSlice = createSlice({
       state.profile_picture =
         pfp && pfp !== "null" ? pfp : "/userPlaceholder.jpg";
     },
+    removeFromLocalStorage: (state) => {
+      state.profile_picture = "/userPlaceholder.jpg";
+      localStorage.removeItem("profile_picture");
+    },
   },
 });
 
-export const { setPfp, loadFromLocalStorage } = pfpSlice.actions;
+export const { setPfp, loadFromLocalStorage, removeFromLocalStorage } =
+  pfpSlice.actions;
 export default pfpSlice.reducer;
