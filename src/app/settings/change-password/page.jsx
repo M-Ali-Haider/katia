@@ -15,11 +15,13 @@ const ChangePasswordPage = () => {
         <form action={formAction} className="max-w-[325px] mt-10">
           <div className="flex flex-col gap-6">
             <PasswordField
+              labelClassName={"text-[#F5F3C2]"}
               labelText={"Current Password"}
               placeholder={"•••••••••••••••"}
               name={"currentPassword"}
             />
             <PasswordField
+              labelClassName={"text-[#F5F3C2]"}
               labelText={"New Password"}
               placeholder={"•••••••••••••••"}
               name={"newPassword"}

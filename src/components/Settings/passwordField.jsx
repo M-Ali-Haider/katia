@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const PasswordField = ({ labelText, placeholder, name }) => {
+const PasswordField = ({ labelClassName, labelText, placeholder, name }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div className="w-full flex flex-col gap-2 text-sm">
-      <label htmlFor="">{labelText}</label>
+      <label htmlFor="" className={labelClassName}>
+        {labelText}
+      </label>
       <div className="relative w-full flex items-center">
         <input
           name={name}
