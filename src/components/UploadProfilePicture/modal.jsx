@@ -70,6 +70,7 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
       toast.success("Photo Uploaded Successfully");
       dispatch(setPfp(state.profile_picture));
       setIsModalOpen(false);
+      setSelectedFile(null);
     }
     if (state?.error) {
       toast.error(state.error);
