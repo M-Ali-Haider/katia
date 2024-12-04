@@ -1,26 +1,22 @@
 "use client";
 import { logout, logoutDestroySession } from "@/actions/actions";
-import { removeFromLocalStorage } from "@/store/pfp";
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
-import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 import LoadingRing from "../LoadingRing";
 
 export function Logout({ className }) {
-  const dispatch = useDispatch();
   const [state, formAction] = useFormState(logout, undefined);
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
     if (state?.success) {
-      dispatch(removeFromLocalStorage());
       logoutDestroySession();
     }
     if (state?.error) {
       toast.error(state.error);
       setLoading(false);
     }
-  }, [state, dispatch]);
+  }, [state]);
   return (
     <form action={formAction}>
       <button
