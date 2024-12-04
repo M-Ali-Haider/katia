@@ -28,9 +28,16 @@ const OTP = ({ email, flow = "login" }) => {
     if (stateOTP?.success) {
       toast.success(stateOTP.message);
       localStorage.setItem("profile_picture", stateOTP.profile_picture);
-      const { user_name, user_email, auth_type, csrfToken, sessionId } =
-        stateOTP;
+      const {
+        user_id,
+        user_name,
+        user_email,
+        auth_type,
+        csrfToken,
+        sessionId,
+      } = stateOTP;
       saveCheckOTPSession(
+        user_id,
         user_name,
         user_email,
         auth_type,

@@ -108,6 +108,7 @@ export const checkOTP = async (prevData, formData) => {
       return {
         success: true,
         message: "OTP Verification Successful. Redirecting...",
+        user_id: data.user_id,
         user_name: data.user_name,
         user_email: data.user_email,
         profile_picture: data.profile_picture,
@@ -282,6 +283,7 @@ export const displayPfp = async () => {
 };
 
 export const saveCheckOTPSession = async (
+  user_id,
   user_name,
   user_email,
   auth_type,
@@ -289,6 +291,7 @@ export const saveCheckOTPSession = async (
   sessionId
 ) => {
   const session = await getSession();
+  session.userId = user_id;
   session.user_name = user_name;
   session.user_email = user_email;
   session.auth_type = auth_type;
