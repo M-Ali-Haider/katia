@@ -35,7 +35,7 @@ export default AccountPage;
 const AccountInfo = ({ label, value }) => {
   return (
     <div>
-      <label htmlFor="" className="mb-2 font-medium">
+      <label htmlFor="" className="mb-2 font-medium text-[#F5F3C2]">
         {label}
       </label>
       <div>{value}</div>
