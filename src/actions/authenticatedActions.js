@@ -170,3 +170,25 @@ export const deleteConversation = async () => {
     return { error: "An unexpected error occured. Please try again later." };
   }
 };
+
+export const getPfp = async () => {
+  try {
+    const session = await getSession();
+    const res = await fetch(`${backendUrl}/api/get-profile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": session.csrfToken,
+        Cookie: `csrftoken=${session.csrfToken}; sessionid=${session.sessionId}`,
+      },
+      credentials: "include",
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to get Profile Picture: ${res.status}`);
+    }
+    return await res.json();
+  } catch (error) {
+    console.error("Error getting pfp ", error);
+    throw error;
+  }
+};
