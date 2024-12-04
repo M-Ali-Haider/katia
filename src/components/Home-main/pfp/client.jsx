@@ -42,7 +42,7 @@ const Pfp = () => {
         // width={48}
         // height={48}
         fill
-        className="rounded-full cursor-pointer active:scale-95 duration-150 ease-custom-ease"
+        className="rounded-full cursor-pointer active:scale-95 duration-150 ease-custom-ease object-cover"
       />
     </div>
   );

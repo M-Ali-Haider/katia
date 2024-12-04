@@ -7,6 +7,8 @@ import LoadingRing from "../LoadingRing";
 import { useDispatch } from "react-redux";
 import { setPfp } from "@/store/pfp";
 import { toast } from "sonner";
+import Cropper from "react-easy-crop";
+import getCroppedImg from "@/utils/cropImage";
 
 const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
   const dispatch = useDispatch();
@@ -15,13 +17,19 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
   const formRef = useRef(null);
   const [state, formAction] = useFormState(uploadProfilePicture, undefined);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(pfp);
   const [isHovered, setIsHovered] = useState(false);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [cropLoading, setCropLoading] = useState(false);
+
+  const onCropComplete = (croppedArea, croppedAreaPixels) => {
+    setCroppedAreaPixels(croppedAreaPixels);
+  };
 
   const handleCancel = (e) => {
     e.preventDefault();
     setSelectedFile(null);
-    setPreviewUrl(pfp);
     setIsModalOpen(false);
   };
 
@@ -35,16 +43,32 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
     if (file) {
       setSelectedFile(file);
       const objectUrl = URL.createObjectURL(file);
-      setPreviewUrl(objectUrl);
       return () => URL.revokeObjectURL(objectUrl);
     }
+  };
+
+  const handleImageCrop = async () => {
+    setCropLoading(true);
+    try {
+      const { file, url } = await getCroppedImg(
+        URL.createObjectURL(selectedFile),
+        croppedAreaPixels
+      );
+
+      const formData = new FormData();
+      formData.append("profile_picture", file);
+      formAction(formData);
+    } catch (error) {
+      toast.error(error.message);
+      console.log(error);
+    }
+    setCropLoading(false);
   };
 
   useEffect(() => {
     if (state?.success) {
       toast.success("Photo Uploaded Successfully");
       dispatch(setPfp(state.profile_picture));
-      setPreviewUrl(state.profile_picture);
       setIsModalOpen(false);
     }
     if (state?.error) {
@@ -78,32 +102,48 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
       >
         <div className="flex justify-between">
           <div className="text-2xl md:text-3xl">Edit photo</div>
-          <button onClick={() => setIsModalOpen(false)}>
+          <button onClick={handleCancel}>
             <CrossSVG />
           </button>
         </div>
         <form ref={formRef} action={formAction}>
           <div className="py-10 flex items-center justify-center">
-            <div
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-              onClick={handleUploadClick}
-              className="relative w-44 h-44 md:w-[250px] md:h-[250px] rounded-full overflow-hidden cursor-pointer"
-            >
-              <Image
-                src={selectedFile ? URL.createObjectURL(selectedFile) : pfp}
-                fill
-                alt="pfp"
-                className="object-cover"
-              />
+            {!selectedFile && (
               <div
-                className={`${
-                  isHovered ? "bg-[rgba(0,0,0,0.7)] opacity-100" : "opacity-0"
-                } absolute inset-0 flex items-center justify-center font-semibold transition-all duration-300 ease-custom-ease z-10`}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                onClick={handleUploadClick}
+                className="relative w-44 h-44 md:w-[250px] md:h-[250px] rounded-full overflow-hidden cursor-pointer"
               >
-                Edit Photo
+                <Image
+                  // src={selectedFile ? URL.createObjectURL(selectedFile) : pfp}
+                  src={pfp}
+                  fill
+                  alt="pfp"
+                  className="object-cover"
+                />
+                <div
+                  className={`${
+                    isHovered ? "bg-[rgba(0,0,0,0.7)] opacity-100" : "opacity-0"
+                  } absolute inset-0 flex items-center justify-center font-semibold transition-all duration-300 ease-custom-ease z-10`}
+                >
+                  Edit Photo
+                </div>
               </div>
-            </div>
+            )}
+            {selectedFile && (
+              <div className="relative w-44 h-44 md:w-[250px] md:h-[250px] rounded-full overflow-hidden cursor-pointer">
+                <Cropper
+                  image={URL.createObjectURL(selectedFile)}
+                  crop={crop}
+                  zoom={zoom}
+                  aspect={1 / 1}
+                  onCropChange={setCrop}
+                  onCropComplete={onCropComplete}
+                  onZoomChange={setZoom}
+                />
+              </div>
+            )}
           </div>
 
           <input
@@ -122,20 +162,14 @@ const ModalPfp = ({ isModalOpen, setIsModalOpen, pfp }) => {
                 text={"Cancel"}
                 className="text-[#F5F3C2]"
               />
-              {/* <ButtonWrapper
-                onClick={handleCancel}
-                text={"Cancel"}
-                className={"text-[#F5F3C2]"}
-              /> */}
               <ButtonWrapper
                 type="submit"
-                // onClick={handleAttachClick}
                 text={"Attach photo"}
+                onClick={handleImageCrop}
                 className={`${
                   !selectedFile && "opacity-50 cursor-not-allowed"
                 } bg-[#F5F3C2] text-black`}
                 disabled={!selectedFile}
-                // disabled={true}
               />
             </div>
           </div>

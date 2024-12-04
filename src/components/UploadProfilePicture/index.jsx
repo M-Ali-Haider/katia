@@ -24,7 +24,12 @@ const UploadProfilePicture = () => {
         >
           Edit Photo
         </div>
-        <Image src={pfp} fill alt="change pfp image" className="-z-[1]" />
+        <Image
+          src={pfp}
+          fill
+          alt="change pfp image"
+          className="-z-[1] object-cover"
+        />
       </button>
       <ModalPfp
         isModalOpen={isModalOpen}

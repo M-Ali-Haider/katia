@@ -78,12 +78,6 @@ export const uploadProfilePicture = async (prevState, formData) => {
 
     const data = await res.json();
     if (res.ok) {
-      // const sessionSize = Buffer.byteLength(JSON.stringify(session));
-      // console.log(`Session size: ${sessionSize} bytes`);
-      // console.log(session);
-      // localStorage.setItem("profile_picture", data.profile_picture);
-      // session.profile_picture = data.profile_picture;
-      // await session.save();
       return {
         success: data.message,
         profile_picture: data.profile_picture,
