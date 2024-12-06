@@ -1,14 +1,32 @@
+import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import remarkGfm from "remark-gfm";
+import "katex/dist/katex.min.css";
+import { InlineMath, BlockMath } from "react-katex";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 const MarkdownRenderer = ({ markdownContent }) => {
+  const preprocessMarkdown = (markdown) => {
+    // Replace \( ... \) inline math
+    markdown = markdown.replace(/\\\((.*?)\\\)/g, (match, p1) => {
+      return `$${p1}$`;
+    });
+
+    // Replace \[ ... \] block math (if needed)
+    markdown = markdown.replace(/\\\[(.*?)\\\]/g, (match, p1) => {
+      return `$$${p1}$$`;
+    });
+
+    return markdown;
+  };
   return (
     <ReactMarkdown
-      remarkPlugins={[remarkGfm]}
+      remarkPlugins={[remarkGfm, remarkMath]}
+      rehypePlugins={[rehypeKatex]}
       className="prose max-w-full overflow-x-auto"
       components={{
-        // Style code blocks
         a({ node, children, href, ...props }) {
           return (
             <a
@@ -42,7 +60,12 @@ const MarkdownRenderer = ({ markdownContent }) => {
             </code>
           );
         },
-        // Style tables
+        inlineMath({ node, ...props }) {
+          return <InlineMath math={node.value} />;
+        },
+        math({ node, ...props }) {
+          return <BlockMath math={node.value} />;
+        },
         table({ children }) {
           return (
             <div className="overflow-x-auto my-4">
@@ -68,7 +91,7 @@ const MarkdownRenderer = ({ markdownContent }) => {
         },
       }}
     >
-      {markdownContent}
+      {preprocessMarkdown(markdownContent)}
     </ReactMarkdown>
   );
 };
