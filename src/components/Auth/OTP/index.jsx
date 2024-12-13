@@ -6,11 +6,13 @@ import { useFormState } from "react-dom";
 import { toast } from "sonner";
 import InputField from "../inputfield";
 import SubmitButton from "../Login/submitButton";
+import { useRouter } from "next/navigation";
 
 const OTP = ({ email, flow = "login" }) => {
   const [stateOTP, formActionOTP] = useFormState(checkOTP, undefined);
   const [countdown, setCountdown] = useState(5);
   const [isResendDisabled, setIsResendDisabled] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     let timer;
@@ -25,6 +27,10 @@ const OTP = ({ email, flow = "login" }) => {
   }, [countdown]);
 
   useEffect(() => {
+    if (stateOTP?.forgotPasswordSuccess) {
+      toast.success(stateOTP.message);
+      router.push("/reset-password");
+    }
     if (stateOTP?.success) {
       toast.success(stateOTP.message);
       localStorage.setItem("profile_picture", stateOTP.profile_picture);
@@ -48,7 +54,7 @@ const OTP = ({ email, flow = "login" }) => {
     if (stateOTP?.error) {
       toast.error(stateOTP.error);
     }
-  }, [stateOTP]);
+  }, [stateOTP, router]);
 
   const handleResend = async (e) => {
     e.preventDefault();

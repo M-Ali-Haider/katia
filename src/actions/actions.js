@@ -103,7 +103,11 @@ export const checkOTP = async (prevData, formData) => {
       session.userId = data.user_id;
       if (flow === "forgot-password") {
         await session.save();
-        throw redirect(`/reset-password`);
+        return {
+          forgotPasswordSuccess: true,
+          message:
+            "OTP Verification Successful. Redirecting to Reset Password...",
+        };
       }
       return {
         success: true,

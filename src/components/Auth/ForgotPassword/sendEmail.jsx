@@ -10,7 +10,7 @@ const SendEmail = ({ state, formAction, pending }) => {
         Forgot your password?
       </div>
       <div className="mt-[18px] text-[#898A96] mb-10 3xl:text-lg">
-        Enter your email to receive a reset link.
+        Enter your email to receive an OTP for reset password process.
       </div>
       <form action={formAction} className="mt-10">
         <InputField
