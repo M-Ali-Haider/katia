@@ -23,8 +23,8 @@ const ContentGenerated = ({
           }`}
         >
           {item.role === "assistant" && (
-            <div>
-              <ChatLogoSVG />
+            <div className="relative w-6 h-6">
+              <Image src={"/katia_logo.png"} alt="new logo" fill />
             </div>
           )}
 

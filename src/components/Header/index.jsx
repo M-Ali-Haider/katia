@@ -3,6 +3,7 @@ import ActiveLinks from "./activeLinks";
 import BurgerMenu from "./burgerMenu";
 import LegalLinks from "./legalLinks";
 import Link from "next/link";
+import Image from "next/image";
 
 const Header = ({ isLegal }) => {
   return (
@@ -15,7 +16,10 @@ const Header = ({ isLegal }) => {
         bg-[#101016] header:bg-[#25262D] header:rounded-2xl text-[#EBE9DE] pl-[22px] pr-4 header:px-6 h-[77px]"
       >
         <div className="h-full py-6 flex items-center">
-          <Link href={"/"}>
+          <Link href={"/"} className="flex items-center gap-2">
+            <div className="relative w-9 h-9">
+              <Image src={"/katia_logo.png"} alt="new logo" fill />
+            </div>
             <HeaderLogoSVG />
           </Link>
         </div>

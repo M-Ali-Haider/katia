@@ -1,15 +1,15 @@
 "use client";
 import { login } from "@/actions/actions";
-import AuthLogoSVG from "@/assets/Auth/logo";
+import SecondAuthLogoSVG from "@/assets/Auth/logo2";
 import Link from "next/link";
 import { useState } from "react";
 import { useFormState } from "react-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 import InputField from "../inputfield";
+import PasswordField from "../passwordfield";
 import GoogleAuthButton from "../signUpGoogle";
 import DontHaveAccount from "./dontHaveAccount";
 import SubmitButton from "./submitButton";
-import PasswordField from "../passwordfield";
 
 const Login = () => {
   const [recaptchaCompleted, setRecaptchaCompleted] = useState(false);
@@ -19,7 +19,7 @@ const Login = () => {
   };
   return (
     <div className="text-white font-inter 3xl:max-w-[500px] max-w-[360px] w-full mt-12 sm:my-20">
-      <AuthLogoSVG className="w-16 h-16 3xl:w-24 3xl:h-24" />
+      <SecondAuthLogoSVG className="w-16 h-16 3xl:w-24 3xl:h-24" />
       <div className="text-[28px] leading-[33.6px] font-semibold mt-10 3xl:text-4xl">
         Sign in
       </div>
