@@ -1,19 +1,42 @@
-import FreeTrialCard from "./freetrial";
-import IncludeFeaturesCard from "./includeFeatures";
+import { contactUsCards } from "@/utils/contactUsCard";
 import PricingHeading from "./top";
+import ShareSVG from "@/assets/ContactUs/share";
 
-const Pricing = () => {
+const ContactUs = () => {
   return (
     <>
       <div className="py-12 sm:py-28" id="pricing">
         <PricingHeading />
-        <div className="mt-20 flex lg:flex-row flex-col flex-wrap gap-5">
-          <FreeTrialCard />
-          <IncludeFeaturesCard />
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+          {contactUsCards.map(({ Svg, href, title }, index) => (
+            <a
+              key={index}
+              target="_blank"
+              href={href}
+              className={`flex items-center justify-between
+              p-6 ${title === "IRC Cloud" && "pb-[14px]"}
+              rounded-xl
+              bg-[#212228] hover:bg-[#F5F3C2] text-[#F3F1BC] hover:text-[#111116]
+              transition-all duration-300 group`}
+            >
+              <div className="text-white group-hover:text-[#111116]">
+                <Svg />
+                <div className="mt-3 font-[600] text-2xl font-polySans">
+                  {title}
+                </div>
+                {title === "IRC Cloud" && (
+                  <div className="mt-1 text-[#898882]">Channel: #Katia</div>
+                )}
+              </div>
+              <div className="">
+                <ShareSVG />
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </>
   );
 };
 
-export default Pricing;
+export default ContactUs;

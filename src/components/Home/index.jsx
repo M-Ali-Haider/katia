@@ -5,7 +5,7 @@ import Footer from "../Footer";
 import GetStarted from "../GetStarted";
 import Header from "../Header";
 import Landing from "../Landing";
-import Pricing from "../Pricing";
+import ContactUs from "../Pricing";
 import Testimonials from "../Testimonials";
 
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
           <Landing />
           <AboutUs />
           <Features />
-          <Pricing />
+          <ContactUs />
           <Testimonials />
           <FAQs />
           <GetStarted />
