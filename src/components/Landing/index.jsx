@@ -1,8 +1,19 @@
+"use client";
+import { useRef } from "react";
 import GetStarted from "./getStarted";
 import Introducing from "./introducing";
 import Redefining from "./redefining";
 
 const Landing = () => {
+  const containerRef = useRef(null);
+  const watchVideo = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
   return (
     <>
       <div
@@ -12,10 +23,13 @@ const Landing = () => {
         <Introducing />
         <div className="flex landing:flex-row flex-col justify-between mt-5 gap-6">
           <Redefining />
-          <GetStarted />
+          <GetStarted watchVideo={watchVideo} />
         </div>
       </div>
-      <div className="mt-[60px] mb-[80px] sm:mb-0 sm:mt-28 relative aspect-[1257/618]">
+      <div
+        ref={containerRef}
+        className="mt-[60px] mb-[80px] sm:mb-0 sm:mt-28 relative aspect-[1257/618]"
+      >
         <video
           poster="/landing.png"
           controls

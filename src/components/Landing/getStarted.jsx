@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const GetStarted = () => {
+const GetStarted = ({ watchVideo }) => {
   return (
     <div className="flex flex-col landing:max-w-[636px] flex-1">
       <div className=" flex flex-col gap-5 text-base text-[#898A96] mb-8">
@@ -26,7 +26,8 @@ const GetStarted = () => {
           Get started with AI Katia
         </Link>
         <ButtonWrapper
-          text={"Watch demo"}
+          onClick={watchVideo}
+          text={"Watch video"}
           className={"border border-solid border-[#5F5F5F] text-[#EBE9DE]"}
         />
       </div>
@@ -36,9 +37,10 @@ const GetStarted = () => {
 
 export default GetStarted;
 
-function ButtonWrapper({ text, className }) {
+function ButtonWrapper({ text, className, onClick }) {
   return (
     <div
+      onClick={onClick}
       className={`active:scale-95 transition duration-100 w-full sm:w-auto text-center py-3 px-5 sm:px-8 rounded-2xl cursor-pointer ${className}`}
     >
       {text}

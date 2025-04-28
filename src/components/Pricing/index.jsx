@@ -25,7 +25,9 @@ const ContactUs = () => {
                   {title}
                 </div>
                 {title === "IRC Cloud" && (
-                  <div className="mt-1 text-[#898882]">Channel: #Katia</div>
+                  <div className="mt-1 text-[#898882]">
+                    Network: Rizon&nbsp;&nbsp;&nbsp;Channel: #Katia
+                  </div>
                 )}
               </div>
               <div className="">
